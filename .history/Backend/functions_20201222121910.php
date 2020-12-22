@@ -746,7 +746,7 @@ if (!function_exists('additionalAdultMembersHTML'))   {
 }
 
 
-if (!function_exists('readFormStatus'))   { // connection not closed in functions, must close outside of them incase still needed (just where I use them)
+if (!function_exists('readFormStatus'))   { // connection not closed in functions, must close outside of them
 
     function readFormStatus($connection) {
         
