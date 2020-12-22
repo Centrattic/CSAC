@@ -99,7 +99,7 @@ if(isset($_POST['submit_button'])){
     }
 
 /*-----------------------------------------------------------------------------*/
-    $file3 = $_FILES['pic3Nominee']; //files transmits file contents
+$file3 = $_FILES['pic3Nominee']; //files transmits file contents
     
     //getting file attributes
     $fileName3 = $file3['name']; //gets name of file
@@ -143,7 +143,7 @@ if(isset($_POST['submit_button'])){
 
 /*-----------------------------------------------------------------------------*/
 
-    $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
+$file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
     
     //getting file attributes
     $fileName = $file['name']; //gets name of file

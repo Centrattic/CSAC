@@ -99,7 +99,7 @@ if(isset($_POST['submit_button'])){
     }
 
 /*-----------------------------------------------------------------------------*/
-    $file3 = $_FILES['pic3Nominee']; //files transmits file contents
+$file3 = $_FILES['pic3Nominee']; //files transmits file contents
     
     //getting file attributes
     $fileName3 = $file3['name']; //gets name of file
@@ -143,7 +143,7 @@ if(isset($_POST['submit_button'])){
 
 /*-----------------------------------------------------------------------------*/
 
-    $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
+$file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
     
     //getting file attributes
     $fileName = $file['name']; //gets name of file
@@ -290,56 +290,69 @@ if(isset($_POST['submit_button'])){
             if ($ageNominee4 != "")  { $ageNominee4 = "Grade " .  $ageNominee4; }
         }*/
 
-        $sqlquery = "INSERT INTO nominations (
-        groupName, nameNominee1, nameNominee2, nameNominee3, nameNominee4, 
-        ageNominee1, ageNominee2, ageNominee3, ageNominee4, 
-        gradeNominee1, gradeNominee2, gradeNominee3, gradeNominee4, 
-        emailNominee1, emailNominee2, emailNominee3, emailNominee4, 
-        schoolNominee1, schoolNominee2, schoolNominee3, schoolNominee4, 
-        nameParent1, nameParent2, nameParent3, nameParent4, 
-        emailParent1, emailParent2, emailParent3, emailParent4, 
-        phoneParent1, phoneParent2, phoneParent3, phoneParent4, 
-        nameNominator, emailNominator, phoneNominator, mediaRelease, timeSubmission,
-        headshotNominee, pic2Nominee, captionPic2, pic3Nominee, captionPic3, 
-        bioNominee, workNominee, twitterNominee, facebookNominee, instagramNominee, 
-        newsNominee, websiteNominee, statusNominee, isYouth, yearNomination, resumeNominee
-        ) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; //need to bind params for placeholders to work // nameNominee is storing allinfo
-        
-        $connection = connectToDB();
-        $statement = mysqli_stmt_init($connection); 
+            $sqlquery = "INSERT INTO nominations (
+            groupName, nameNominee1, nameNominee2, nameNominee3, nameNominee4, 
+            ageNominee1, ageNominee2, ageNominee3, ageNominee4, 
+            gradeNominee1, gradeNominee2, gradeNominee3, gradeNominee4, 
+            emailNominee1, emailNominee2, emailNominee3, emailNominee4, 
+            schoolNominee1, schoolNominee2, schoolNominee3, schoolNominee4, 
+            nameParent1, nameParent2, nameParent3, nameParent4, 
+            emailParent1, emailParent2, emailParent3, emailParent4, 
+            phoneParent1, phoneParent2, phoneParent3, phoneParent4, 
+            nameNominator, emailNominator, phoneNominator, mediaRelease, timeSubmission,
+            headshotNominee, pic2Nominee, captionPic2, pic3Nominee, captionPic3, 
+            bioNominee, workNominee, twitterNominee, facebookNominee, instagramNominee, 
+            newsNominee, websiteNominee, statusNominee, isYouth, yearNomination, resumeNominee
+            ) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; //need to bind params for placeholders to work // nameNominee is storing allinfo
+            
+            $connection = connectToDB();
+            $statement = mysqli_stmt_init($connection); 
 
 
-        //prepare statement
-        if(!mysqli_stmt_prepare($statement, $sqlquery)){
-            mysqli_close($connection);
-            header("Location: ../Frontend/nomination.php?/unsuccessful"); //brings back to heroes.php
-        } else {
-            //storing info in database (3 params of info)
-            mysqli_stmt_bind_param($statement, "ssssssssssssssssssssssssssssssssssssissssssssssssssiis", //ints are booleans, 1 if true, 0 if false
-            $groupName,$nameNominee1,$nameNominee2,$nameNominee3,$nameNominee4,
-            $ageNominee1,$ageNominee2,$ageNominee3,$ageNominee4,
-            $gradeNominee1,$gradeNominee2,$gradeNominee3,$gradeNominee4,
-            $emailNominee1,$emailNominee2,$emailNominee3,$emailNominee4,
-            $schoolNominee1,$schoolNominee2,$schoolNominee3,$schoolNominee4,
-            $nameParent1,$nameParent2,$nameParent3,$nameParent4,
-            $emailParent1,$emailParent2,$emailParent3,$emailParent4,
-            $phoneParent1,$phoneParent2,$phoneParent3,$phoneParent4,
-            $nameNominator,$emailNominator,$phoneNominator,$mediaRelease,$timeSubmission,
-            $headshotNominee,$pic2Nominee,$Captionpic2Nominee,$pic3Nominee,$Captionpic3Nominee,
-            $bioNominee,$workNominee,$twitterNominee,$facebookNominee,$instagramNominee,
-            $newsNominee,$websiteNominee,$statusNominee,$isYouth,$yearNomination,$resumeNominee
-            );
-            if (mysqli_error($connection) != '') {
-                mysqli_close($connection);
-                header("Location: ../Frontend/nomination.php?error=unsuccessful_retry");
-                exit();
-            }
-            mysqli_stmt_close($statement);
-            mysqli_close($connection);
-            header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
-            exit();
-        }   
+            //prepare statement
+            if(!mysqli_stmt_prepare($statement, $sqlquery)){
+                header("Location: ../Frontend/nomination.php?/unsuccessful"); //brings back to heroes.php
+            } else {
+                //storing info in database (3 params of info)
+                mysqli_stmt_bind_param($statement, "ssssssssssssssssssssssssssssssssssssissssssssssssssiis", //ints are booleans, 1 if true, 0 if false
+                $groupName,$nameNominee1,$nameNominee2,$nameNominee3,$nameNominee4,
+                $ageNominee1,$ageNominee2,$ageNominee3,$ageNominee4,
+                $gradeNominee1,$gradeNominee2,$gradeNominee3,$gradeNominee4,
+                $emailNominee1,$emailNominee2,$emailNominee3,$emailNominee4,
+                $schoolNominee1,$schoolNominee2,$schoolNominee3,$schoolNominee4,
+                $nameParent1,$nameParent2,$nameParent3,$nameParent4,
+                $emailParent1,$emailParent2,$emailParent3,$emailParent4,
+                $phoneParent1,$phoneParent2,$phoneParent3,$phoneParent4,
+                $nameNominator,$emailNominator,$phoneNominator,$mediaRelease,$timeSubmission,
+                $headshotNominee,$pic2Nominee,$Captionpic2Nominee,$pic3Nominee,$Captionpic3Nominee,
+                $bioNominee,$workNominee,$twitterNominee,$facebookNominee,$instagramNominee,
+                $newsNominee,$websiteNominee,$statusNominee,$isYouth,$yearNomination,$resumeNominee
+                );
+                if (mysqli_error($connection) != '') {
+                    header("Location: ../Frontend/nomination.php?/unsuccessful1-" . mysqli_error($connection));
+                    exit();
+                }
+
+                mysqli_stmt_execute($statement);
+                if (mysqli_error($connection) != '') {
+                    header("Location: ../Frontend/nomination.php?/unsuccessful2-" . mysqli_error($connection));
+                    exit();
+                }
+
+                mysqli_stmt_store_result($statement);
+                if (mysqli_error($connection) != '') {
+                    header("Location: ../Frontend/nomination.php?/unsuccessful3-" . mysqli_error($connection));
+                    exit();
+                }
+
+                header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
+            }   
+  
+    mysqli_stmt_close($statement);
+    mysqli_close($connection);
+    exit();
+
 }
 
 
