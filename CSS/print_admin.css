@@ -1,0 +1,80 @@
+@media print {
+
+.no-print {
+    display:none; /*why does display: none make things look wierd for the form*/
+}
+
+.print img, .print {
+    display: inline-grid;
+}
+
+.print, .members-item, .below-work-item{
+    display: block;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    position: relative;
+}
+
+
+.membertable, .below-work-table {
+    min-width: 100%;
+}
+
+.heroGrid2{
+    page-break-before: always;
+    page-break-after: always;
+}
+
+
+/*
+.heroWrapper {
+    width: 100%;
+    min-height: 1800px;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 3%;
+    font-size: 0.9em;
+    grid-template:
+    "name name name" 4%
+    "members members members" 24%
+    /*"headshot category category" 5% 
+    "headshot bio bio" 13.5%
+    "headshot work work" 20.5%
+    "contact contact contact" 11%
+    "pic2 pic2 pic3" 23%
+    "nominator nominator nominator" 3%
+    / 35% 20% 45%;
+}  */
+
+.heroGrid1 {
+    display: grid;
+    min-height: 850px;
+    margin-bottom: 3%;
+    width: 100%;
+    font-size: 0.9em;
+    grid-template:
+    "name name name" 5%
+    "youth-adult youth-adult youth-adult" 5%
+    "members members members" 28%
+    /*"headshot category category" 5%*/
+    "headshot work work" 30%
+    "headshot work work" 32%
+    / 35% 20% 45%;
+}
+
+.heroGrid2 {
+    display: grid;
+    min-height: 650px;
+    width: 100%;
+    margin-bottom: 3%;
+    font-size: 0.9em;
+    grid-template:
+    "media below-work below-work" 25%
+    "pic2 pic2 pic3" 55%
+    "nominator nominator nominator" 15%
+    / 35% 20% 45%;
+}
+
+}
+

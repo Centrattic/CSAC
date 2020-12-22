@@ -1,0 +1,96 @@
+* {
+    text-align: center;
+    padding: 2px;
+    margin: 2px;
+    font-family: 'Lato', sans-serif;
+    border-radius: 15px;
+
+}
+
+body {
+    background-color: #F2EFE1;
+
+}
+
+#homepicgrid {
+    display: grid;
+    width: auto;
+    height: 30%;
+
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+}
+
+#homepicgrid img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+#homepagetitle {
+    font-size: 2em; 
+    width: auto; 
+    background-color: white; 
+    padding: 10px;
+    margin: 5px;
+}
+
+
+
+#hometextgrid {
+    display: grid;
+    width: auto;
+    margin: 0 auto;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+}
+
+#hometextgrid div {
+    background-color: #E2DECC;
+    padding: 20px;
+}
+
+
+#CSAChistory {
+    background-color: #E2DECC;
+    padding: 20px;
+    padding-top: 0;
+    margin: 10px 0;
+}
+#impact {
+    background-color: white;
+    width: 35%; 
+    margin: 2% auto;
+    border: 10px solid transparent;
+    border-image: url("../Images/borderhome.jpg") 30 round !important;
+}
+
+#impact h3 {
+    margin: 15%;
+}
+
+
+#getinvolved {
+    background-image: url("../Images/millburnblossoms.jpg");
+    height: 60%;
+    display: flex;
+    align-items: center;      
+    justify-content: center;
+}
+
+#nominateahero {
+    width: 70%;   
+    padding: 0 20px;
+    background-color:  #F2EFE1;
+}
+
+#getinvolved p {
+    margin: 10px;
+}
+
+button {
+    font-size: 1em;
+}
+
+

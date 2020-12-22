@@ -1,0 +1,253 @@
+/*.heroWrapper {
+    border: 5px solid black;
+    display: grid;
+    width: 50%;
+    min-height: 800px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    font-size: 0.9em;
+    grid-template:
+    "name name name" 5%
+    "members members members" 15.5%
+    /*"headshot category category" 5%
+    "headshot bio bio" 14.5%
+    "headshot work work" 21.5%
+    "contact contact contact" 12%
+    "pic2 pic2 pic3" 25%
+    "nominator nominator nominator" 6%
+    / 35% 20% 45%;
+}*/
+
+
+.heroGrid1 {
+    border: 5px solid black;
+    background-color: white;
+    display: grid;
+    width: 50%;
+    border-bottom: none;
+    margin-bottom: 3%;
+    min-height: 456px;
+    max-height: 500px;
+    margin: 0 auto;
+    font-size: 0.9em;
+    grid-template:
+    "name name name" 9%
+    "youth-adult youth-adult youth-adult" 7%
+    "members members members" 23%
+    /*"headshot category category" 5%*/
+    "headshot work work" 29%
+    "headshot work work" 32%
+    / 35% 20% 45%;
+
+}
+
+.heroGrid2 {
+    border: 5px solid black;
+    background-color: white;
+    border-top: none;
+    display: grid;
+    width: 50%;
+    min-height: 344px;
+    max-height: 400px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    font-size: 0.9em;
+    grid-template:
+    "media below-work below-work" 28%
+    "pic2 pic2 pic3" 58%
+    "nominator nominator nominator" 14%
+    / 35% 20% 45%;
+
+}
+
+@media (max-width: 1400px) {
+    .heroGrid1 {
+        width: 60%; 
+    }
+
+    .heroGrid2 {
+        width: 60%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .heroGrid1 {
+        width: 75%; 
+    }
+
+    .heroGrid2 {
+        width: 75%;
+    }
+}
+
+@media (max-width: 925px) {
+    .heroGrid1 {
+        width: 90%; 
+    }
+
+    .heroGrid2 {
+        width: 90%;
+    }
+}
+
+@media (max-width: 775px) {
+    .heroGrid1 {
+        width: 100%; 
+    }
+
+    .heroGrid2 {
+        width: 100%;
+    }
+}
+
+* {
+    text-align: center;
+    padding: 1px;
+    margin: 1px;
+    box-sizing: content-box;
+}
+
+.grid-title {
+    font-size: 1.1em;
+}
+
+
+.name-item {
+    grid-area: name;
+    font-size: 1.5em;
+    max-height: 1fr;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}
+
+.youth-adult-item {
+    grid-area: youth-adult;
+    font-size: 1.25em;
+    font-weight: 600;
+    border: 2px solid black;
+}
+
+.members-item {
+    grid-area: members;
+    border: 2px solid black;
+    overflow-wrap: break-word;
+    font-size: 1em;
+    overflow: auto;
+}
+
+.membertable, .membertable td, .membertable th, .below-work-table, .below-work-table td, .below-work-table th {
+    padding: 4px;
+    border: 1px solid black;
+}
+
+
+.membertable, .below-work-table{
+    min-width: 95%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.members-item p {
+    line-height: 15px;
+}
+/*.category-item {
+    grid-area: category;
+    max-height: 0.75fr;
+    font-size: 1.25em;
+    font-weight: bold;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}*/
+
+.headshot-item {
+    grid-area: headshot;
+    max-height: 5.75fr;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}
+
+.headshot {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/*
+.bio-item {
+    grid-area: bio;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}*/
+
+.work-item {
+    max-height: 100%;
+    grid-area: work;
+    border: 2px solid black;
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+
+.below-work-item {
+    grid-area: below-work;
+    border: 2px solid black;
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+.media-item {
+    grid-area: media;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}
+
+.contact-info {
+    grid-area: contact-info;
+    border-bottom: 1px solid gray;
+
+}
+
+.social {
+    grid-area: social;
+    overflow:auto;
+    text-align: left;
+    border: 1px solid gray;
+}
+
+.social1 {
+    overflow:auto;
+    grid-area: social1;
+    text-align: left;
+    border:1px solid gray;
+}
+
+.pic2-item {
+    grid-area: pic2;
+    border: 2px solid black;
+}
+
+.pic2-pic {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.pic3-item {
+    grid-area: pic3;
+    border: 2px solid black;
+}
+
+.pic3-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nominator-item {
+    grid-area: nominator;
+    font-size: 1.25em;
+}
+
+.print-grid-1, .print-grid-2 {
+    all: unset;
+}

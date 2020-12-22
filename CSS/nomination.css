@@ -1,0 +1,102 @@
+/* Why is navbar so fat on this page???*/
+
+
+* {
+    text-align: center;
+    padding: 2px;
+    margin: 2px;
+    font-family: 'Lato', sans-serif !important;
+    font-size: 1em;
+    color: black;
+}
+
+i {
+   float: left;
+   margin-left: 10px;
+}
+
+body {
+    background-color: #F2EFE1;
+}
+
+fieldset {
+    border: 3px solid black;
+
+}
+
+.age-definition {
+    font-size: 1.5em; 
+    margin: 10px;
+    font-weight: 800;
+}
+
+legend {
+    all: unset;
+    font-size: 2em;
+    color: #2A365D;
+    font-weight: 700;
+}
+
+form {
+    background-color: #E2DECC;
+    width: 60%;
+    margin: 0 auto;
+}
+
+input, textarea {
+    text-align: left;
+    background-color: #ffffff;
+    border: 1px solid black;
+    color: black !important;
+}
+
+.col-1, .col-2, .col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11 { /*,col-12 not included cause that's full row*/
+    margin-left: 15px;
+}
+
+textarea {
+    width: 75% !important;
+    height: 30% !important;
+    margin: 0 auto;
+}
+
+h4 {
+    text-align: left; 
+    margin-left: 10px; 
+    font-weight: 800;
+}
+
+
+label {
+    font-size: 1em;
+    float: left;
+}
+
+span {
+    font-style: italic;
+}
+
+input[placeholder= "Caption"] {
+    margin-top: 5px;
+}
+
+
+#media {
+    font-size: 1em;
+}
+
+.requiredF {
+    color: red;
+}
+
+/* Collapsible Nominee Info */
+
+
+.submit_button {
+    padding: 5px;
+    margin: 5px;
+    width: 50%;
+    text-align:center;
+    font-size: 1.5em;
+    background-color: #F2EFE1;
+}
