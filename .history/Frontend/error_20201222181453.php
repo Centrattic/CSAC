@@ -14,15 +14,12 @@ session_start();
 
     <?php
         navbar();
-    ?>
-
-      <?php
 
         
         if (!function_exists('checkForError')) {
           function checkForError() {
               if(isset($_GET['error'])) {
-                  echo("<br> <br> <span class = 'error-message' style = 'all: unset; color:red; font-size: 1.5em; font-weight: 500;'>");
+                  echo("<span class = 'error-message' style = 'all: unset; color:red; font-size: 2em; font-weight: 500;'>");
                   echo('An error has ocurred! ');
 
                   if ($_GET['error'] == "notsignedin") {
@@ -56,12 +53,11 @@ session_start();
                     echo('What a confusing error!');
                   }
 
-                  echo("<br><br> Please go back (press the back arrow) to retrieve your entered information and/or retry 😊.");
+                  echo("<br> Please go back (press the back button) to retrieve your entered information and/or retry 😊.");
                   echo("</span>");
               }
           }
         }
-
 
         checkForError();
 
@@ -69,7 +65,6 @@ session_start();
 
 
       ?>
-
   </body>
 </html>
 </main>

@@ -11,9 +11,9 @@ session_start();
   </head>
 
   <body>
-    
     <?php
         navbar();
+        checkForError();
     ?>
     
     <h1> Nominations for this year have closed. They will open again on January 1st. Please check back later. Thank you! </h1>

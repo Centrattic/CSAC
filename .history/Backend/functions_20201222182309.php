@@ -96,7 +96,7 @@ if (!function_exists('navbar'))   {
               } else {
                   echo('<li> 
                   <form id = "logout" action = "../Backend/logoutscript.php" method = "post">      
-                  <button style = "font-size: 1em !important; border-radius: 0px" onclick = "logout();" type = "submit" name = "logout-submit">Logout</button> 
+                  <button style = " border-radius: 0px" onclick = "logout();" type = "submit" name = "logout-submit">Logout</button> 
                   </form>
                 </li>');
               }

@@ -11,6 +11,7 @@ echo('
   <body>');
 
   navbar();
+  checkForError();
 
   echo(' <div class = "circle">
         <div id = "h1-sizing">

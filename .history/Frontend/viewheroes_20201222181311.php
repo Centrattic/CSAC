@@ -14,7 +14,6 @@ session_start();
     </head>
     <body>
         <div class = "no-print">
-            
             <?php
             navbar();
             ?>

@@ -56,7 +56,7 @@ session_start();
                     echo('What a confusing error!');
                   }
 
-                  echo("<br><br> Please go back (press the back arrow) to retrieve your entered information and/or retry 😊.");
+                  echo("<br><br> Please go back (press the back button) to retrieve your entered information and/or retry 😊.");
                   echo("</span>");
               }
           }

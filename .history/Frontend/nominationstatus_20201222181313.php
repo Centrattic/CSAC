@@ -11,7 +11,6 @@ session_start();
   </head>
 
   <body>
-    
     <?php
         navbar();
     ?>
