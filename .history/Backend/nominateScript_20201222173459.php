@@ -23,6 +23,9 @@ if(isset($_POST['submit_button'])){
             ${'fileExt' . $number} = explode('.', ${'fileName' . $number}); //splits file name into file name and file type
             ${'fileActualExt' . $number} = strtolower(end(${'fileExt' . $number})); //makes file type lowercase
             ${'allowed' . $number} = $formatArray;
+            } else{
+                ${'allowed' . $number} = ;
+            }
             ${'fileNameNew' . $number} = $filenameprefix . "_" . uniqid('','true').".". ${'fileActualExt' . $number}; //creates unqiue id for each image because if images have same name, gets overriden        
 
             //checks if correct file type is in file
@@ -70,7 +73,11 @@ if(isset($_POST['submit_button'])){
         return ${'fileNameNew' . $number};
     }
 
+    
+
     $fileNameNew1 = fileNameGenerator(1, "headshotNominee", "fineran.jpg", array('jpg', 'png', 'jpeg'));
+    //echo($fileNameNew1);
+    //exit();
     $fileNameNew2 = fileNameGenerator(2, "pic2Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
     $fileNameNew3 = fileNameGenerator(3, "pic3Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
     $fileNameNew4 = fileNameGenerator(4, "resumeNominee", "5fe230c0cac4f3.24108706.pdf", array('docx', 'pdf'));

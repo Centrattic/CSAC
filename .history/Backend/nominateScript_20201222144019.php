@@ -4,79 +4,10 @@ require 'functions.php';
 
 if(isset($_POST['submit_button'])){
 
-    function fileNameGenerator($number, $questionName, $defaultName, $formatArray) {
-        if(!isset($_FILES[$questionName]) || $_FILES[$questionName]['error'] == UPLOAD_ERR_NO_FILE) {
-            ${'fileNameNew' . $number} = $defaultName;
-        } else {
-            $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
-
-            ${'file' . $number} = $_FILES[$questionName]; //files transmits file contents
-            
-            //getting file attributes
-            ${'fileName' . $number} = ${'file' . $number}['name']; //gets name of file
-            ${'fileTmpName' . $number} = ${'file' . $number}['tmp_name']; //gets temp location of file
-            ${'fileSize' . $number} = ${'file' . $number}['size']; //gets size of file
-            ${'fileError' . $number} = ${'file' . $number}['error']; //checks if error while uploading file
-            ${'fileType' . $number} = ${'file' . $number}['type']; //gets type of file, /png
- 
-            //restricting file types
-            ${'fileExt' . $number} = explode('.', ${'fileName' . $number}); //splits file name into file name and file type
-            ${'fileActualExt' . $number} = strtolower(end(${'fileExt' . $number})); //makes file type lowercase
-            ${'allowed' . $number} = $formatArray;
-            ${'fileNameNew' . $number} = $filenameprefix . "_" . uniqid('','true').".". ${'fileActualExt' . $number}; //creates unqiue id for each image because if images have same name, gets overriden        
-
-            //checks if correct file type is in file
-            if(in_array(${'fileActualExt' . $number}, ${'allowed' . $number})){
-                if(${'fileError' . $number} === 0) {
-                    //0 means no error uploading
-                    //restricting file size
-                    if (${'fileSize' . $number} < 5000000)/*5000000 = 5mb */{
-                        ${'fileDestination' . $number} = '../Images/'. ${'fileNameNew' . $number};
-                        //uploading file function
-                        move_uploaded_file(${'fileTmpName' . $number}, ${'fileDestination' . $number}); //moves file from temp location to real one
-                        //header("Location: nomination.php?uploadSucess=1"); //brings back to heroes.php
-                        #echo 'Success!!';
-                    } else {
-                        if($_POST['isYouth'] == 1) {
-                            header("Location: ../Frontend/nomination.php?error=file_size>5MB");
-                        } else if ($_POST['isYouth'] == 0) {
-                            header("Location: ../Frontend/adultnomination.php?error=file_size>5MB");
-                        }
-                        exit();
-                    }
-
-                } elseif(${'fileError' . $number} === 1) {
-                    //1 means error uploading
-                    if($_POST['isYouth'] == 1) {
-                        header("Location: ../Frontend/nomination.php?error=can't_upload");
-                    } else if ($_POST['isYouth'] == 0) {
-                        header("Location: ../Frontend/adultnomination.php?error=can't_upload");
-                    }
-                    exit();
-                }
-
-            } elseif(!in_array(${'fileActualExt' . $number}, ${'allowed' . $number})) {
-                echo(${'fileActualExt' . $number});
-                print_r(${'allowed' . $number});
-                exit();
-                if($_POST['isYouth'] == 1) {
-                    header("Location: ../Frontend/nomination.php?error=wrong_file_type");
-                } else if ($_POST['isYouth'] == 0) {
-                    header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
-                }
-                exit();
-            }
-        }
-        return ${'fileNameNew' . $number};
-    }
-
-    $fileNameNew1 = fileNameGenerator(1, "headshotNominee", "fineran.jpg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew2 = fileNameGenerator(2, "pic2Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew3 = fileNameGenerator(3, "pic3Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew4 = fileNameGenerator(4, "resumeNominee", "5fe230c0cac4f3.24108706.pdf", array('docx', 'pdf'));
-
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
- /*   $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
+    $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
+
+    if (isset($_FILES['headshotNominee'])) {
 
         $file1 = $_FILES['headshotNominee']; //files transmits file contents
         
@@ -102,7 +33,7 @@ if(isset($_POST['submit_button'])){
                 if($fileError1 === 0) {
                     //0 means no error uploading
                     //restricting file size
-                    if($fileSize1 < 5000000)/*5000000 = 5mb {
+                    if($fileSize1 < 5000000)/*5000000 = 5mb */{
                         $fileDestination1 = '../Images/'.$fileNameNew1;
                         //uploading file function
                         move_uploaded_file($fileTmpName1, $fileDestination1); //moves file from temp location to real one
@@ -127,7 +58,7 @@ if(isset($_POST['submit_button'])){
                     exit();
                 }
 
-            } elseif(!in_array($fileActualExt1, $allowed1)) {
+            } else {
                 if($_POST['isYouth'] == 1) {
                     header("Location: ../Frontend/nomination.php?error=wrong_file_type");
                 } else if ($_POST['isYouth'] == 0) {
@@ -136,9 +67,11 @@ if(isset($_POST['submit_button'])){
                 exit();
             }
         }
+    }
 
 /*-----------------------------------------------------------------------------*/
-       /* $file2 = $_FILES['pic2Nominee']; //files transmits file contents
+    if (isset($_FILES['pic2Nominee'])) {
+        $file2 = $_FILES['pic2Nominee']; //files transmits file contents
         
         //getting file attributes
         $fileName2 = $file2['name']; //gets name of file
@@ -162,7 +95,7 @@ if(isset($_POST['submit_button'])){
                 if($fileError2 === 0) {
                     //0 means no error uploading
                     //restricting file size
-                    if($fileSize2 < 5000000)/*5000000 = 5mb {
+                    if($fileSize2 < 5000000)/*5000000 = 5mb */{
                         $fileDestination2 = '../Images/'.$fileNameNew2;
                         //uploading file function
                         move_uploaded_file($fileTmpName2, $fileDestination2); //moves file from temp location to real one
@@ -177,7 +110,7 @@ if(isset($_POST['submit_button'])){
                         exit();
                     }
                         
-                } else if($fileError2 === 1) {
+                } else if($fileError1 === 1) {
                     //1 means error uploading
                     if($_POST['isYouth'] == 1) {
                         header("Location: ../Frontend/nomination.php?error=can't_upload");
@@ -187,7 +120,7 @@ if(isset($_POST['submit_button'])){
                     exit();
                 }
 
-            } elseif(!in_array($fileActualExt2, $allowed2)) {
+            } else {
                 if($_POST['isYouth'] == 1) {
                     header("Location: ../Frontend/nomination.php?error=wrong_file_type");
                 } else if ($_POST['isYouth'] == 0) {
@@ -196,8 +129,11 @@ if(isset($_POST['submit_button'])){
                 exit();
             }
         }
-/*-----------------------------------------------------------------------------
-        $file3 = $_FILES['pic3Nominee']; //files transmits file contents
+    }
+
+/*-----------------------------------------------------------------------------*/
+if (isset($_FILES['pic3Nominee'])) {
+    $file3 = $_FILES['pic3Nominee']; //files transmits file contents
         
         //getting file attributes
         $fileName3 = $file3['name']; //gets name of file
@@ -221,7 +157,7 @@ if(isset($_POST['submit_button'])){
                 if($fileError3 === 0) {
                     //0 means no error uploading
                     //restricting file size
-                    if($fileSize3 < 5000000)/*5000000 = 5mb {
+                    if($fileSize3 < 5000000)/*5000000 = 5mb */{
                         $fileDestination3 = '../Images/'.$fileNameNew3;
                         //uploading file function
                         move_uploaded_file($fileTmpName3, $fileDestination3); //moves file from temp location to real one
@@ -236,7 +172,7 @@ if(isset($_POST['submit_button'])){
                         exit();
                     }
                     
-                } else if($fileError3 === 1) {
+                } else if($fileError1 === 1) {
                     //1 means error uploading
                     if($_POST['isYouth'] == 1) {
                         header("Location: ../Frontend/nomination.php?error=can't_upload");
@@ -246,7 +182,7 @@ if(isset($_POST['submit_button'])){
                     exit();
                 }
 
-            }elseif(!in_array($fileActualExt3, $allowed3)){
+            } else {
                 if($_POST['isYouth'] == 1) {
                     header("Location: ../Frontend/nomination.php?error=wrong_file_type");
                 } else if ($_POST['isYouth'] == 0) {
@@ -255,67 +191,69 @@ if(isset($_POST['submit_button'])){
                 exit();
             }
         } 
+}
 
 /*-----------------------------------------------------------------------------*/
-        /*$file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
-        
-        //getting file attributes
-        $fileName = $file['name']; //gets name of file
-        $fileTmpName = $file['tmp_name']; //gets temp location of file
-        $fileSize = $file['size']; //gets size of file
-        $fileError = $file['error']; //checks if error while uploading file
-        $fileType = $file['type']; //gets type of file, /png
 
-        if ($fileSize === 0) {
-            $fileNameResume = "";
-        } else {
+$file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
+    
+    //getting file attributes
+    $fileName = $file['name']; //gets name of file
+    $fileTmpName = $file['tmp_name']; //gets temp location of file
+    $fileSize = $file['size']; //gets size of file
+    $fileError = $file['error']; //checks if error while uploading file
+    $fileType = $file['type']; //gets type of file, /png
 
-            //restricting file types
-            $fileExt = explode('.', $fileName); //splits file name into file name and file type
-            $fileActualExt = strtolower(end($fileExt)); //makes file type lowercase
-            $allowed = array('pdf', 'docx');
-            $fileNameResume = $filenameprefix . "_" . uniqid('','true').".".$fileActualExt; //creates unqiue id for each image because if images have same name, gets overriden        
+    if ($fileSize === 0) {
+        $fileNameResume = "";
+    } else {
 
-            //checks if correct file type is in file
-            if(in_array($fileActualExt, $allowed)){
-                if($fileError === 0) {
-                    //0 means no error uploading
-                    //restricting file size
-                    if($fileSize < 5000000)/*5000000 = 5mb {
-                        $fileDestination = '../Images/'.$fileNameResume;
-                        //uploading file function
-                        move_uploaded_file($fileTmpName, $fileDestination); //moves file from temp location to real one
-                        //header("Location: ../Frontend/nomination.php?uploadSucess=1"); //brings back to heroes.php
-                        #echo 'Success!!';
-                    } else {
-                        if($_POST['isYouth'] == 1) {
-                            header("Location: ../Frontend/nomination.php?error=file_size>5MB");
-                        } else if ($_POST['isYouth'] == 0) {
-                            header("Location: ../Frontend/adultnomination.php?error=file_size>5MB");
-                        }
-                        exit();
-                        //echo 'Your file is too big! Try uploading another file!'; // doesn't even appear rip b/c this happens after upload ....
-                    }
-                } else if($fileError === 1) {
-                    //1 means error uploading
+        //restricting file types
+        $fileExt = explode('.', $fileName); //splits file name into file name and file type
+        $fileActualExt = strtolower(end($fileExt)); //makes file type lowercase
+        $allowed = array('pdf', 'docx');
+        $fileNameResume = $filenameprefix . "_" . uniqid('','true').".".$fileActualExt; //creates unqiue id for each image because if images have same name, gets overriden        
+
+        //checks if correct file type is in file
+        if(in_array($fileActualExt, $allowed)){
+            if($fileError === 0) {
+                //0 means no error uploading
+                //restricting file size
+                if($fileSize < 5000000)/*5000000 = 5mb */{
+                    $fileDestination = '../Images/'.$fileNameResume;
+                    //uploading file function
+                    move_uploaded_file($fileTmpName, $fileDestination); //moves file from temp location to real one
+                    //header("Location: ../Frontend/nomination.php?uploadSucess=1"); //brings back to heroes.php
+                    #echo 'Success!!';
+                } else {
                     if($_POST['isYouth'] == 1) {
-                        header("Location: ../Frontend/nomination.php?error=can't_upload");
+                        header("Location: ../Frontend/nomination.php?error=file_size>5MB");
                     } else if ($_POST['isYouth'] == 0) {
-                        header("Location: ../Frontend/adultnomination.php?error=can't_upload");
+                        header("Location: ../Frontend/adultnomination.php?error=file_size>5MB");
                     }
                     exit();
-                    //echo 'There was an error uploading your file';
+                    //echo 'Your file is too big! Try uploading another file!'; // doesn't even appear rip b/c this happens after upload ....
                 }
-            } elseif(!in_array($fileActualExt, $allowed)) {
+            } else if($fileError === 1) {
+                //1 means error uploading
                 if($_POST['isYouth'] == 1) {
-                    header("Location: ../Frontend/nomination.php?error=wrong_file_type");
+                    header("Location: ../Frontend/nomination.php?error=can't_upload");
                 } else if ($_POST['isYouth'] == 0) {
-                    header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
+                    header("Location: ../Frontend/adultnomination.php?error=can't_upload");
                 }
                 exit();
-                //echo 'Wrong file type. Only pdf or docx is allowed';
+                //echo 'There was an error uploading your file';
             }
-        } */
+        } else {
+            if($_POST['isYouth'] == 1) {
+                header("Location: ../Frontend/nomination.php?error=wrong_file_type");
+            } else if ($_POST['isYouth'] == 0) {
+                header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
+            }
+            exit();
+            //echo 'Wrong file type. Only pdf or docx is allowed';
+        }
+    } 
 /*-----------------------------------------------------------------------------*/
         $groupName = $_POST['groupName'];
         $nameNominee1 = $_POST['nameNominee1'];
@@ -396,10 +334,7 @@ if(isset($_POST['submit_button'])){
         $headshotNominee = $fileNameNew1;
         $pic2Nominee = $fileNameNew2;
         $pic3Nominee = $fileNameNew3;
-        $resumeNominee = $fileNameNew4;
-
-        //echo($headshotNominee);
-        //exit();
+        $resumeNominee = $fileNameResume;
 
         $Captionpic2Nominee = $_POST['Captionpic2Nominee'];
         $Captionpic3Nominee = $_POST['Captionpic3Nominee'];
@@ -473,8 +408,8 @@ if(isset($_POST['submit_button'])){
 
             mysqli_stmt_execute($statement);
             if (mysqli_error($connection) != '') {
-                //mysqli_close($connection);
-                header("Location: ../Frontend/nomination.php?error=unsuccessful_exsdecute-". $_GET[mysqli_error($connection)]);
+                mysqli_close($connection);
+                header("Location: ../Frontend/nomination.php?error=unsuccessful_execute");
                 exit();
             }
 

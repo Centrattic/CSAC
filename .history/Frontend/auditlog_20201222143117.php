@@ -27,7 +27,7 @@ if(!isset($_SESSION['UserID'])) {
 
       #audit-table {
         border-collapse: collapse;
-        background-color: #FFEEFE; 
+        background-color: #FEEEFE; 
       }
     </style>
 

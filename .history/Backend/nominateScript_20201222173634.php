@@ -71,6 +71,8 @@ if(isset($_POST['submit_button'])){
     }
 
     $fileNameNew1 = fileNameGenerator(1, "headshotNominee", "fineran.jpg", array('jpg', 'png', 'jpeg'));
+    //echo($fileNameNew1);
+    //exit();
     $fileNameNew2 = fileNameGenerator(2, "pic2Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
     $fileNameNew3 = fileNameGenerator(3, "pic3Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
     $fileNameNew4 = fileNameGenerator(4, "resumeNominee", "5fe230c0cac4f3.24108706.pdf", array('docx', 'pdf'));

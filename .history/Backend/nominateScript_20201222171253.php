@@ -4,7 +4,7 @@ require 'functions.php';
 
 if(isset($_POST['submit_button'])){
 
-    function fileNameGenerator($number, $questionName, $defaultName, $formatArray) {
+    function fileNameGenerator($number, $questionName, $defaultName) {
         if(!isset($_FILES[$questionName]) || $_FILES[$questionName]['error'] == UPLOAD_ERR_NO_FILE) {
             ${'fileNameNew' . $number} = $defaultName;
         } else {
@@ -22,7 +22,11 @@ if(isset($_POST['submit_button'])){
             //restricting file types
             ${'fileExt' . $number} = explode('.', ${'fileName' . $number}); //splits file name into file name and file type
             ${'fileActualExt' . $number} = strtolower(end(${'fileExt' . $number})); //makes file type lowercase
-            ${'allowed' . $number} = $formatArray;
+            if ($questionName = "resumeNominee") {
+                ${'allowed' . $number} = array('docx', 'pdf');
+            } else{
+                ${'allowed' . $number} = array('jpg', 'png', 'jpeg');
+            }
             ${'fileNameNew' . $number} = $filenameprefix . "_" . uniqid('','true').".". ${'fileActualExt' . $number}; //creates unqiue id for each image because if images have same name, gets overriden        
 
             //checks if correct file type is in file
@@ -45,7 +49,7 @@ if(isset($_POST['submit_button'])){
                         exit();
                     }
 
-                } elseif(${'fileError' . $number} === 1) {
+                } else if(${'fileError' . $number} === 1) {
                     //1 means error uploading
                     if($_POST['isYouth'] == 1) {
                         header("Location: ../Frontend/nomination.php?error=can't_upload");
@@ -55,10 +59,7 @@ if(isset($_POST['submit_button'])){
                     exit();
                 }
 
-            } elseif(!in_array(${'fileActualExt' . $number}, ${'allowed' . $number})) {
-                echo(${'fileActualExt' . $number});
-                print_r(${'allowed' . $number});
-                exit();
+            } else if(!in_array(${'fileActualExt' . $number}, ${'allowed' . $number})) {
                 if($_POST['isYouth'] == 1) {
                     header("Location: ../Frontend/nomination.php?error=wrong_file_type");
                 } else if ($_POST['isYouth'] == 0) {
@@ -70,10 +71,12 @@ if(isset($_POST['submit_button'])){
         return ${'fileNameNew' . $number};
     }
 
-    $fileNameNew1 = fileNameGenerator(1, "headshotNominee", "fineran.jpg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew2 = fileNameGenerator(2, "pic2Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew3 = fileNameGenerator(3, "pic3Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew4 = fileNameGenerator(4, "resumeNominee", "5fe230c0cac4f3.24108706.pdf", array('docx', 'pdf'));
+    
+
+    fileNameGenerator(1, "headshotNominee", "fineran.jpg");
+    fileNameGenerator(2, "pic2Nominee", "defaultservice.jpeg");
+    fileNameGenerator(3, "pic3Nominee", "defaultservice.jpeg");
+    fileNameGenerator(4, "resumeNominee", "5fe230c0cac4f3.24108706.pdf");
 
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
  /*   $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
@@ -398,8 +401,8 @@ if(isset($_POST['submit_button'])){
         $pic3Nominee = $fileNameNew3;
         $resumeNominee = $fileNameNew4;
 
-        //echo($headshotNominee);
-        //exit();
+        echo($headshotNominee);
+        exit();
 
         $Captionpic2Nominee = $_POST['Captionpic2Nominee'];
         $Captionpic3Nominee = $_POST['Captionpic3Nominee'];

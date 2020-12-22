@@ -26,7 +26,7 @@ session_start();
             margin: 0 auto;
             border: 5px solid black;
             border-radius: 0px;
-            background-color: #FFEEFE; 
+            background-color: #EEFFFE; 
             width: 60%;
         }
 

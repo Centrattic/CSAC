@@ -4,36 +4,42 @@ require 'functions.php';
 
 if(isset($_POST['submit_button'])){
 
-    function fileNameGenerator($number, $questionName, $defaultName, $formatArray) {
-        if(!isset($_FILES[$questionName]) || $_FILES[$questionName]['error'] == UPLOAD_ERR_NO_FILE) {
-            ${'fileNameNew' . $number} = $defaultName;
-        } else {
-            $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
+    function fileNameGenerator($number, $questionName, $defaultName) {
+        
+        $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
 
-            ${'file' . $number} = $_FILES[$questionName]; //files transmits file contents
-            
-            //getting file attributes
-            ${'fileName' . $number} = ${'file' . $number}['name']; //gets name of file
-            ${'fileTmpName' . $number} = ${'file' . $number}['tmp_name']; //gets temp location of file
-            ${'fileSize' . $number} = ${'file' . $number}['size']; //gets size of file
-            ${'fileError' . $number} = ${'file' . $number}['error']; //checks if error while uploading file
-            ${'fileType' . $number} = ${'file' . $number}['type']; //gets type of file, /png
- 
+        ${'file' . $number} = $_FILES["$questionName"]; //files transmits file contents
+        
+        //getting file attributes
+        ${'fileName' . $number} = ${'file' . $number}['name']; //gets name of file
+        $fileTmpName[$number] = ${'file' . $number}['tmp_name']; //gets temp location of file
+        $fileSize[$number] = ${'file' . $number}['size']; //gets size of file
+        $fileError[$number] = ${'file' . $number}['error']; //checks if error while uploading file
+        $fileType[$number] = ${'file' . $number}['type']; //gets type of file, /png
+
+        if ($fileSize[$number] === 0) {
+            $fileNameNew[$number] = "$defaultName";
+
+        } else {
             //restricting file types
-            ${'fileExt' . $number} = explode('.', ${'fileName' . $number}); //splits file name into file name and file type
-            ${'fileActualExt' . $number} = strtolower(end(${'fileExt' . $number})); //makes file type lowercase
-            ${'allowed' . $number} = $formatArray;
-            ${'fileNameNew' . $number} = $filenameprefix . "_" . uniqid('','true').".". ${'fileActualExt' . $number}; //creates unqiue id for each image because if images have same name, gets overriden        
+            $fileExt[$number] = explode('.', $fileName[$number]); //splits file name into file name and file type
+            $fileActualExt[$number] = strtolower(end($fileExt[$number])); //makes file type lowercase
+            if ($questionName = "resumeNominee") {
+                $allowed[$number] = array('docx', 'pdf');
+            } else {
+                $allowed[$number] = array('jpg', 'png', 'jpeg');
+            }
+            $fileNameNew[$number] = $filenameprefix . "_" . uniqid('','true').".".$fileActualExt[$number]; //creates unqiue id for each image because if images have same name, gets overriden        
 
             //checks if correct file type is in file
-            if(in_array(${'fileActualExt' . $number}, ${'allowed' . $number})){
-                if(${'fileError' . $number} === 0) {
+            if(in_array($fileActualExt[$number], $allowed[$number])){
+                if($fileError[$number] === 0) {
                     //0 means no error uploading
                     //restricting file size
-                    if (${'fileSize' . $number} < 5000000)/*5000000 = 5mb */{
-                        ${'fileDestination' . $number} = '../Images/'. ${'fileNameNew' . $number};
+                    if($fileSize[$number] < 5000000)/*5000000 = 5mb */{
+                        $fileDestination[$number] = '../Images/'.$fileNameNew[$number];
                         //uploading file function
-                        move_uploaded_file(${'fileTmpName' . $number}, ${'fileDestination' . $number}); //moves file from temp location to real one
+                        move_uploaded_file($fileTmpName[$number], $fileDestination[$number]); //moves file from temp location to real one
                         //header("Location: nomination.php?uploadSucess=1"); //brings back to heroes.php
                         #echo 'Success!!';
                     } else {
@@ -45,7 +51,7 @@ if(isset($_POST['submit_button'])){
                         exit();
                     }
 
-                } elseif(${'fileError' . $number} === 1) {
+                } else if($fileError[$number] === 1) {
                     //1 means error uploading
                     if($_POST['isYouth'] == 1) {
                         header("Location: ../Frontend/nomination.php?error=can't_upload");
@@ -55,10 +61,7 @@ if(isset($_POST['submit_button'])){
                     exit();
                 }
 
-            } elseif(!in_array(${'fileActualExt' . $number}, ${'allowed' . $number})) {
-                echo(${'fileActualExt' . $number});
-                print_r(${'allowed' . $number});
-                exit();
+            } elseif(!in_array($fileActualExt[$number], $allowed[$number])) {
                 if($_POST['isYouth'] == 1) {
                     header("Location: ../Frontend/nomination.php?error=wrong_file_type");
                 } else if ($_POST['isYouth'] == 0) {
@@ -67,13 +70,7 @@ if(isset($_POST['submit_button'])){
                 exit();
             }
         }
-        return ${'fileNameNew' . $number};
     }
-
-    $fileNameNew1 = fileNameGenerator(1, "headshotNominee", "fineran.jpg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew2 = fileNameGenerator(2, "pic2Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew3 = fileNameGenerator(3, "pic3Nominee", "defaultservice.jpeg", array('jpg', 'png', 'jpeg'));
-    $fileNameNew4 = fileNameGenerator(4, "resumeNominee", "5fe230c0cac4f3.24108706.pdf", array('docx', 'pdf'));
 
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
  /*   $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
@@ -257,7 +254,7 @@ if(isset($_POST['submit_button'])){
         } 
 
 /*-----------------------------------------------------------------------------*/
-        /*$file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
+        $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOULD ALSO BE ADDITIONAL INFORMATION
         
         //getting file attributes
         $fileName = $file['name']; //gets name of file
@@ -281,7 +278,7 @@ if(isset($_POST['submit_button'])){
                 if($fileError === 0) {
                     //0 means no error uploading
                     //restricting file size
-                    if($fileSize < 5000000)/*5000000 = 5mb {
+                    if($fileSize < 5000000)/*5000000 = 5mb */{
                         $fileDestination = '../Images/'.$fileNameResume;
                         //uploading file function
                         move_uploaded_file($fileTmpName, $fileDestination); //moves file from temp location to real one
@@ -315,7 +312,7 @@ if(isset($_POST['submit_button'])){
                 exit();
                 //echo 'Wrong file type. Only pdf or docx is allowed';
             }
-        } */
+        } 
 /*-----------------------------------------------------------------------------*/
         $groupName = $_POST['groupName'];
         $nameNominee1 = $_POST['nameNominee1'];
@@ -398,9 +395,6 @@ if(isset($_POST['submit_button'])){
         $pic3Nominee = $fileNameNew3;
         $resumeNominee = $fileNameNew4;
 
-        //echo($headshotNominee);
-        //exit();
-
         $Captionpic2Nominee = $_POST['Captionpic2Nominee'];
         $Captionpic3Nominee = $_POST['Captionpic3Nominee'];
 
@@ -473,8 +467,8 @@ if(isset($_POST['submit_button'])){
 
             mysqli_stmt_execute($statement);
             if (mysqli_error($connection) != '') {
-                //mysqli_close($connection);
-                header("Location: ../Frontend/nomination.php?error=unsuccessful_exsdecute-". $_GET[mysqli_error($connection)]);
+                mysqli_close($connection);
+                header("Location: ../Frontend/nomination.php?error=unsuccessful_execute");
                 exit();
             }
 
