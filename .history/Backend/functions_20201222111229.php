@@ -167,6 +167,269 @@ if (!function_exists('footer')) {
 }
 
 
+
+
+if (!function_exists('generateVerifiedHeroes'))   {
+
+    function generateVerifiedHeroes() {
+        
+        $mysqli = connectToDB();
+        
+        //collecting info from form
+        /*if(isset($_POST['Search'])){ //Since everything wrapped in this post search, nothing appears until we search. If I want to change that, go here
+            
+            $searchq = $_POST['Search'];*/
+            //filter out chars that are not nums because only searching for zip code
+            //$searchq = preg_replace("#[^0-9]#", "", $searchq); //replaces all chars of searchq that are not a num with blank
+            
+            //sql query to search database
+            $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'submitted' ";
+
+            $result = $mysqli->query($sqlquery) or die ("could not search");
+
+            $count = mysqli_num_rows($result);
+            $index=0;
+        
+            if ($count == 0){
+                echo "<p><br><br>There are no heroes for verification.</p>"; //eventually make it so that verified heroes no longer appear in the verify nominations area.
+            } else {
+                echo "<br><p style = 'font-size: 1.25em;'> Found $count Heroes!</p><br><br>";
+
+                while($row = mysqli_fetch_array($result)){
+
+                    $idNominations = $row['idNominations'];
+
+                    $groupName = $row['groupName'];
+                    $nameNominee1 = $row['nameNominee1'];
+                    $nameNominee2 = $row['nameNominee2'];
+                    $nameNominee3 = $row['nameNominee3'];
+                    $nameNominee4 = $row['nameNominee4'];
+                    $ageNominee1 = $row['ageNominee1'];
+                    $ageNominee2 = $row['ageNominee2'];
+                    $ageNominee3 = $row['ageNominee3'];
+                    $ageNominee4 = $row['ageNominee4'];
+                    $emailNominee1 = $row['emailNominee1'];
+                    $emailNominee2 = $row['emailNominee2'];
+                    $emailNominee3 = $row['emailNominee3'];
+                    $emailNominee4 = $row['emailNominee4'];
+                    $schoolNominee1 = $row['schoolNominee1'];
+                    $schoolNominee2 = $row['schoolNominee2'];
+                    $schoolNominee3 = $row['schoolNominee3'];
+                    $schoolNominee4 = $row['schoolNominee4'];
+                    $nameParent1 = $row['nameParent1'];
+                    $nameParent2 = $row['nameParent2'];
+                    $nameParent3 = $row['nameParent3'];
+                    $nameParent4 = $row['nameParent4'];
+                    $emailParent1 = $row['emailParent1'];
+                    $emailParent2 = $row['emailParent2'];
+                    $emailParent3 = $row['emailParent3'];
+                    $emailParent4 = $row['emailParent4'];
+                    $phoneParent1 = $row['phoneParent1'];
+                    $phoneParent2 = $row['phoneParent2'];
+                    $phoneParent3 = $row['phoneParent3'];
+                    $phoneParent4 = $row['phoneParent4'];
+                    $nameNominator = $row['nameNominator'];
+                    $emailNominator = $row['emailNominator'];
+                    $phoneNominator = $row['phoneNominator'];
+                    $mediaRelease = $row['mediaRelease'];
+                    $timeSubmission = $row['timeSubmission'];
+
+                    $headshotNominee = $row['headshotNominee'];
+                    $pic2Nominee = $row['pic2Nominee'];
+                    $pic3Nominee = $row['pic3Nominee'];
+
+                    $bioNominee = $row['bioNominee'];
+                    $workNominee = $row['workNominee'];
+                    $twitterNominee = $row['twitterNominee'];
+                    $facebookNominee = $row['facebookNominee'];
+                    $instagramNominee = $row['instagramNominee'];
+                    $newsNominee = $row['newsNominee'];
+                    $websiteNominee = $row['websiteNominee'];
+                    $statusNominee = $row['statusNominee'];
+                    $isYouth = $row['isYouth'];
+                    
+
+                    if ($headshotNominee == "") {
+                        $headshotNominee = "defaulthero.png";
+                    }
+
+                    if ($pic2Nominee == "") {
+                        $pic2Nominee = "defaultservice.jpeg";
+                    }
+
+                    if ($pic3Nominee == "") {
+                        $pic3Nominee = "defaultservice2.jpeg";
+                    }
+
+                    /*
+
+                    $newslinktext = "";
+                    if ($news != "") {
+                        $newslinktext="Hero's News Link";
+                    }
+                    */
+
+                    if ($groupName === "") {
+                        $groupName = $nameNominee1;
+                    }
+                
+                    $output = "
+
+                        <div class = 'no-print'>
+                            <a class = 'removelink' href = ../Backend/removeHeroesScript.php?id=$idNominations> ARCHIVE/REMOVE </a>
+                            <a class = 'approvelink' href = ../Backend/approveHeroesScript.php?id=$idNominations> MAKE WINNER </a>
+                        </div>
+                        <div class = 'print heroWrapper'>
+
+                            <div class = 'heroGrid1'>
+                            
+                                <div class = 'name-item'> 
+                                    $groupName
+                                </div>
+
+                                <div class = 'members-item'>
+                                    <b class = 'grid-title'> Group Members </b> <br>
+
+                                    <table class = 'membertable'>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Grade</th>
+                                        <th>School Name</th>
+                                        <th>Email</th>
+                                        <th>Parent Name</th>
+                                        <th>Parent Email</th>
+                                        <th>Parent Phone</th>
+                                    </tr> 
+                                        <tr>
+                                            <td>$nameNominee1</td>
+                                            <td>$ageNominee1</td>
+                                            <td>$schoolNominee1</td>
+                                            <td>$emailNominee1</td>
+                                            <td>$nameParent1</td>
+                                            <td>$emailParent1</td>
+                                            <td>$phoneParent1</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>$nameNominee2</td>
+                                            <td>$ageNominee2</td>
+                                            <td>$schoolNominee2</td>
+                                            <td>$emailNominee2</td>
+                                            <td>$nameParent2</td>
+                                            <td>$emailParent2</td>
+                                            <td>$phoneParent2</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>$nameNominee3</td>
+                                            <td>$ageNominee3</td>
+                                            <td>$schoolNominee3</td>
+                                            <td>$emailNominee3</td>
+                                            <td>$nameParent3</td>
+                                            <td>$emailParent3</td>
+                                            <td>$phoneParent3</td>
+                                        </tr> 
+
+                                        <tr>
+                                            <td>$nameNominee4</td>
+                                            <td>$ageNominee4</td>
+                                            <td>$schoolNominee4</td>
+                                            <td>$emailNominee4</td>
+                                            <td>$nameParent4</td>
+                                            <td>$emailParent4</td>
+                                            <td>$phoneParent4</td>
+                                        </tr>
+                                    </table>
+                            
+                                </div>
+                                
+                                <div class = 'headshot-item'> 
+                                    <img class = 'headshot' src= '../Images/$headshotNominee'>
+                                </div>
+                                <div class = 'bio-item'> 
+                                    <b class = 'gridtitle-'> Hero's Biography </b> <br>
+                                    $bioNominee
+                                </div>
+                                <div class = 'work-item'> 
+                                    <b class = 'grid-title'> Hero's Work </b> <br>
+                                    $workNominee
+                                </div>
+
+                            </div>
+
+                            <div class = 'heroGrid2'>
+
+                                <div class = 'contact-item'>
+                                <div class = 'contact-info'> <b class = 'grid-title'> Hero's Contact </b> </div> <br>
+                                    <div class = 'social'>
+                                        <b> Twitter:</b> <a class = 'sociallink' target = '_blank' href = '$twitterNominee'>Twitter Link</a> <br>
+                                        <b> Facebook: </b> <a class = 'sociallink' target = '_blank' href = '$facebookNominee'>Facebook Link</a>  <br>
+                                        <b> Instagram: </b> <a class = 'sociallink' target = '_blank' href = '$instagramNominee'>Instagram Link </a>
+                                    </div>
+                                    <div class = 'social1'>
+                                        <b> News Link: </b> <a class = 'sociallink' target = '_blank' href = '$newsNominee'> News Link</a> <br>
+                                        <b> Website: </b> <a class = 'sociallink' target = '_blank' href = '$websiteNominee'> Website Link </a>
+                                    </div>
+                                </div>
+
+                                <div class = 'pic2-item'> 
+                                    <img class = 'pic2-pic' src= '../Images/$pic2Nominee'>
+                                </div>
+                                <div class = 'pic3-item'> 
+                                    <img class = 'pic3-pic' src= '../Images/$pic3Nominee'>
+                                </div>
+                                <div class = 'nominator-item'> 
+                                    <p><b>Nominated by: </b> $nameNominator, $emailNominator, $phoneNominator</p> 
+                                    <p> <b> Submission Time: </b> $timeSubmission UTC</p>
+                                </div>
+                            </div>
+                    </div>";
+
+                    
+                    echo $output;
+
+
+                        $index++;              
+
+            }
+
+
+            mysqli_free_result($result);
+        }
+
+
+        mysqli_close($mysqli);
+
+        /*echo('
+        <form method = "post" action = "../Frontend/connectHeroScript.php">
+            <button class = "approve-all" name = "approve" type = "submit"> Approve All Heroes </button>
+        </form>');*/
+
+        echo ('
+                    <style>
+
+                        .removelink, .approvelink {
+                            all: unset;
+                            text-decoration: none;
+                            padding: 5px;
+                            width: 20%;
+                            font-size: 1.25em;
+                            margin: 5px;
+                        }
+
+                        .removelink {
+                            background-color: red;
+                        }
+
+                        .approvelink {
+                            background-color: green;
+                        }
+     
+                        </style>
+
+                        ');
+    }
+}
+
+
 if (!function_exists('generateHeroesListing'))   {
 
     function generateHeroesListing($type) {
@@ -178,7 +441,7 @@ if (!function_exists('generateHeroesListing'))   {
         // 5. currentwinners : grid  of current winners
         // 4. pastwinners : grid of past winners
 
-        $connection = connectToDB();
+        $mysqli = connectToDB();
         
         //collecting info from form
         /*if(isset($_POST['Search'])){ //Since everything wrapped in this post search, nothing appears until we search. If I want to change that, go here
@@ -204,7 +467,7 @@ if (!function_exists('generateHeroesListing'))   {
                 $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ";
             }
 
-            $result = $connection->query($sqlquery) or die ("could not search");
+            $result = $mysqli->query($sqlquery) or die ("could not search");
 
             $count = mysqli_num_rows($result);
             $index=0;
@@ -578,7 +841,7 @@ if (!function_exists('generateHeroesListing'))   {
         }
 
 
-        mysqli_close($connection);
+        mysqli_close($mysqli);
 
         /*echo('
         <form method = "post" action = "../Frontend/connectHeroScript.php">
@@ -770,10 +1033,9 @@ if (!function_exists('readFormStatus'))   {
 
         return array ($formStatus, $comments, $time);
     }
-}
 
 
-    if (!function_exists('updateFormStatus')) {
+    if (!function_exists('updateFormStatus'))   {
 
         function updateFormStatus($connection, $status, $comments, $time) {
         
@@ -861,6 +1123,7 @@ if (!function_exists('readFormStatus'))   {
         $result->free();
         return $last_result;
     }
-
+    
+}
 
 ?>

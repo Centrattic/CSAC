@@ -3,6 +3,8 @@ require 'functions.php';
 
 if(isset($_POST['login-submit'])){
 
+   $connection = connectToDB();
+
     $emailuid = $_POST['emailuid'];
     $password = $_POST['pwd'];
 
@@ -12,7 +14,6 @@ if(isset($_POST['login-submit'])){
     }
 
     else{
-        $connection = connectToDB();
         $sql = "SELECT * FROM users WHERE usernameUsers=? OR emailUsers=?"; //possible syntax error
         $statement = mysqli_stmt_init($connection);
         if (!mysqli_stmt_prepare($statement, $sql)) { //checking that this info can be extracted for database/any errors in it

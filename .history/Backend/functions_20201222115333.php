@@ -770,10 +770,9 @@ if (!function_exists('readFormStatus'))   {
 
         return array ($formStatus, $comments, $time);
     }
-}
 
 
-    if (!function_exists('updateFormStatus')) {
+    if (!function_exists('updateFormStatus'))   {
 
         function updateFormStatus($connection, $status, $comments, $time) {
         
@@ -861,6 +860,7 @@ if (!function_exists('readFormStatus'))   {
         $result->free();
         return $last_result;
     }
-
+    
+}
 
 ?>

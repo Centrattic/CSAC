@@ -1,5 +1,6 @@
 <?php
 require '../Backend/functions.php';
+require '../Backend/dbhconnect.php';
 session_start();
 ?>
 

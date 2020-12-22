@@ -3,6 +3,8 @@ require 'functions.php';
 
 if(isset($_POST['login-submit'])){
 
+   
+
     $emailuid = $_POST['emailuid'];
     $password = $_POST['pwd'];
 
@@ -55,6 +57,7 @@ if(isset($_POST['login-submit'])){
 }
 
 else {
+    mysqli_close($connection);
     header("Location: ../Frontend/home.php"); //if we want to add new html file for mains stuff, change entry location here
     exit();
 }

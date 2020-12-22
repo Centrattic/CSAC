@@ -1,5 +1,6 @@
 <?php // ASK DAD WHY IT IS UNSUCCSFLL TO INPUT INTO QUERY LOG
     require 'functions.php';
+    require 'dbhconnect.php';
     
     if(!isset($_SESSION['UserID'])) {
         header("Location: ../Frontend/home.php?error=notsignedin");       
@@ -8,7 +9,7 @@
 
     if (!function_exists('editHeroStatus'))   {
 
-    function editHeroStatus($connection, $id, $newStatus, $type) { // Coincidence that connection parameter has same name as connection, which is its input from connectToDB()
+    function editHeroStatus($connection, $id, $newStatus, $type) {
         $sqlquery = "UPDATE nominations SET statusNominee='$newStatus' WHERE idNominations='$id'";
 
         if(mysqli_query($connection, $sqlquery)) {
