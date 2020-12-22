@@ -20,10 +20,6 @@ session_start();
     <br>
 
     <style>
-        h1 {
-            font-size: 2em;
-        }
-        
         #before2020-table {
             margin: 0 auto;
             border: 5px solid black;

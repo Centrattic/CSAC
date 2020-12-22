@@ -157,8 +157,8 @@ if (!function_exists('footer')) {
       </div>
 
       <nav class='footer-nav' role='navigation'>
-        <p>Copyright &copy $date Millburn Township Community Service Award Committee.
-         All rights reserved. </p>
+        <p>Copyright Millburn Township Community Service Award Committee &copy;
+        $date All rights reserved </p>
       </nav>
     </footer>");
     }

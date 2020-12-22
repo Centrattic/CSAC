@@ -132,7 +132,6 @@ if (!function_exists('navbar'))   {
 
 if (!function_exists('footer')) {
     function footer() {
-        $date = date('Y');
         echo("<footer id='colophon' class='site-footer' role='contentinfo'>
       <div class='social-wrapper'>
         <ul>
@@ -157,8 +156,8 @@ if (!function_exists('footer')) {
       </div>
 
       <nav class='footer-nav' role='navigation'>
-        <p>Copyright &copy $date Millburn Township Community Service Award Committee.
-         All rights reserved. </p>
+        <p>Copyright Millburn Township Community Service Award Committee &copy; </p>
+           <p> All rights reserved </p>
       </nav>
     </footer>");
     }

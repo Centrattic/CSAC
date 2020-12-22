@@ -132,35 +132,34 @@ if (!function_exists('navbar'))   {
 
 if (!function_exists('footer')) {
     function footer() {
-        $date = date('Y');
-        echo("<footer id='colophon' class='site-footer' role='contentinfo'>
-      <div class='social-wrapper'>
+        echo('<footer id="colophon" class="site-footer" role="contentinfo">
+      <div class="social-wrapper">
         <ul>
           <li>
-            <a href='#' target='_blank'>
-              <img src='https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png' alt='Twitter Logo' class='twitter-icon'></a>
+            <a href="#" target="_blank">
+              <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" alt="Twitter Logo" class="twitter-icon"></a>
           </li>
           <li>
-            <a href='#' target='_blank'>
-              <img src='https://www.mchenryvillage.com/images/instagram-icon.png' alt='Instagram Logo' class='instagram-icon'></a>
+            <a href="#" target="_blank">
+              <img src="https://www.mchenryvillage.com/images/instagram-icon.png" alt="Instagram Logo" class="instagram-icon"></a>
           </li>
           <li>
-            <a href='#' target='_blank'>
-              <img src='https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg' alt='Linkedin Logo' class='linkedin-icon'></a>
+            <a href="#" target="_blank">
+              <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="Linkedin Logo" class="linkedin-icon"></a>
           </li>
           <li>
-            <a href='#' target='_blank'>
-              <img src='http://www.iconarchive.com/download/i54037/danleech/simple/facebook.ico' alt='Facebook Logo' class='facebook-icon'></a>
+            <a href="#" target="_blank">
+              <img src="http://www.iconarchive.com/download/i54037/danleech/simple/facebook.ico" alt="Facebook Logo" class="facebook-icon"></a>
           </li>
           
         </ul>
       </div>
 
-      <nav class='footer-nav' role='navigation'>
-        <p>Copyright &copy $date Millburn Township Community Service Award Committee.
-         All rights reserved. </p>
+      <nav class="footer-nav" role="navigation">
+        <p>Copyright Millburn Township Community Service Award Committee &copy; </p>
+          <?php echo ("date("Y")"); ?> All rights reserved.;
       </nav>
-    </footer>");
+    </footer>');
     }
 }
 
