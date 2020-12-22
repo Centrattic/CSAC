@@ -3,16 +3,7 @@
 if (!function_exists('connectToDB'))   {
 
     function connectToDB() {
-        //prepared statement for security
-        $database = "localhost";
-        $username = "root";
-        $password = "";
-        $connection = mysqli_connect($database, $username, $password) or die ("could not connect");
-        $connection->select_db("young_heroes") or die("could not find database"); //DistanceHacks might change based on name of database
-        return $connection;
-    }
 
-    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "troopsho_yhuser";
@@ -20,6 +11,7 @@ if (!function_exists('connectToDB'))   {
         $connection = mysqli_connect($database, $username, $password) or die ("could not connect");
         $connection->select_db("troopsho_yh") or die("could not find database"); //DistanceHacks might change based on name of database
         return $connection;
+        
     }
 }
 
@@ -41,12 +33,11 @@ if (!function_exists('searchBar'))   {
 
 if (!function_exists('checkForError')) {
     function checkForError() {
-        if(isset($_GET['error'])) {
-            echo("<span class = 'error-message' style = 'all: unset; color:red; font-size: 1.25em; font-weight: 500;'>");
-            echo ('Error: '. $_GET['error']);
-            echo("<br> Press the back button to retrieve your entered information.");
-            echo("</span>");
-        }
+        echo("<span class = 'error-message' style = 'color:red; font-size: 1.25em; font-weight: 500;'>");
+        if(isset($_GET['error']))
+        echo 'Error: '. $_GET['error'];
+      echo("</span>");
+  
     }
 }
 

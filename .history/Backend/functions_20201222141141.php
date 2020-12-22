@@ -41,12 +41,11 @@ if (!function_exists('searchBar'))   {
 
 if (!function_exists('checkForError')) {
     function checkForError() {
-        if(isset($_GET['error'])) {
-            echo("<span class = 'error-message' style = 'all: unset; color:red; font-size: 1.25em; font-weight: 500;'>");
-            echo ('Error: '. $_GET['error']);
-            echo("<br> Press the back button to retrieve your entered information.");
-            echo("</span>");
-        }
+        echo("<span class = 'error-message' style = 'all: unset; color:red; font-size: 1.25em; font-weight: 500;'>");
+        if(isset($_GET['error']))
+        echo 'Error: '. $_GET['error'];
+      echo("<br> Press the back button to continue entering information. </span>");
+  
     }
 }
 

@@ -1,10 +1,6 @@
 <?php
 require '../Backend/functions.php';
 session_start();
-
-if(!isset($_SESSION['UserID'])) {
-  header("Location: ../Frontend/home.php?error=notsignedin");       
-}
 ?>
 
 <html>
@@ -31,8 +27,13 @@ if(!isset($_SESSION['UserID'])) {
     </style>
 
     <?php
-      navbar(); 
+      navbar();
+
+      if(!isset($_SESSION['UserID'])) {
+        header("Location: ../Frontend/home.php?error=notsignedin");       
+    }
     ?>
+
 
     <?php
 

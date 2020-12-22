@@ -47,6 +47,7 @@ if (!function_exists('checkForError')) {
             echo("<br> Press the back button to retrieve your entered information.");
             echo("</span>");
         }
+  
     }
 }
 

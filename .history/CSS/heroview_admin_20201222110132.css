@@ -23,7 +23,7 @@
     border: 5px solid black;
     background-color: white;
     display: grid;
-    width: 60%;
+    width: 50%;
     border-bottom: none;
     margin-bottom: 3%;
     min-height: 456px;
@@ -46,15 +46,15 @@
     background-color: white;
     border-top: none;
     display: grid;
-    width: 60%;
-    min-height: 400px;
-    max-height: 425px;
+    width: 50%;
+    min-height: 344px;
+    max-height: 400px;
     margin: 0 auto;
     margin-bottom: 3%;
     font-size: 0.9em;
     grid-template:
-    "media below-work below-work" 27%
-    "pic2 pic2 pic3" 59%
+    "media below-work below-work" 28%
+    "pic2 pic2 pic3" 58%
     "nominator nominator nominator" 14%
     / 35% 20% 45%;
 
@@ -62,31 +62,31 @@
 
 @media (max-width: 1400px) {
     .heroGrid1 {
-        width: 70%; 
+        width: 60%; 
     }
 
     .heroGrid2 {
-        width: 80%;
+        width: 60%;
     }
 }
 
 @media (max-width: 1150px) {
     .heroGrid1 {
-        width: 80%; 
+        width: 75%; 
     }
 
     .heroGrid2 {
-        width: 90%;
+        width: 75%;
     }
 }
 
 @media (max-width: 925px) {
     .heroGrid1 {
-        width: 100%; 
+        width: 90%; 
     }
 
     .heroGrid2 {
-        width: 100%;
+        width: 90%;
     }
 }
 

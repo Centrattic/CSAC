@@ -31,8 +31,11 @@ if(!isset($_SESSION['UserID'])) {
     </style>
 
     <?php
-      navbar(); 
+      navbar();
+
+      
     ?>
+
 
     <?php
 

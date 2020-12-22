@@ -7,6 +7,8 @@ if(isset($_POST['submit_button'])){
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
     $filenameprefix = preg_replace('/\s+/', '', $_POST['nameNominee1']);
 
+    if (isset($_FILES['headshotNominee'])) {
+
         $file1 = $_FILES['headshotNominee']; //files transmits file contents
         
         //getting file attributes
@@ -18,7 +20,7 @@ if(isset($_POST['submit_button'])){
 
         if ($fileSize1 === 0) {
             $fileNameNew1 = "defaulthero.png";
-
+            
         } else {
             //restricting file types
             $fileExt1 = explode('.', $fileName); //splits file name into file name and file type
@@ -65,6 +67,7 @@ if(isset($_POST['submit_button'])){
                 exit();
             }
         } 
+    } 
 
 /*-----------------------------------------------------------------------------*/
 
@@ -78,7 +81,7 @@ if(isset($_POST['submit_button'])){
     $fileType2 = $file2['type']; //gets type of file, /png
 
     if ($fileSize2 === 0) {
-        $fileNameNew2 = "defaultservice.jpeg";
+        $fileNameNew2 = "../Images/defaultservice.jpeg";
 
     } else {
         //restricting file types
@@ -99,33 +102,34 @@ if(isset($_POST['submit_button'])){
                     header("Location: nomination.php?uploadSucess=1"); //brings back to heroes.php
                     #echo 'Success!!';
                 } else {
+                        if($_POST['isYouth'] == 1) {
+                            header("Location: ../Frontend/nomination.php?error=file_size>5MB");
+                        } else if ($_POST['isYouth'] == 0) {
+                            header("Location: ../Frontend/adultnomination.php?error=file_size>5MB");
+                        }
+                        exit();
+                    }
+                    
+                } else if($fileError1 === 1) {
+                    //1 means error uploading
                     if($_POST['isYouth'] == 1) {
-                        header("Location: ../Frontend/nomination.php?error=file_size>5MB");
+                        header("Location: ../Frontend/nomination.php?error=can't_upload");
                     } else if ($_POST['isYouth'] == 0) {
-                        header("Location: ../Frontend/adultnomination.php?error=file_size>5MB");
+                        header("Location: ../Frontend/adultnomination.php?error=can't_upload");
                     }
                     exit();
                 }
-                    
-            } else if($fileError1 === 1) {
-                //1 means error uploading
+
+            } else {
                 if($_POST['isYouth'] == 1) {
-                    header("Location: ../Frontend/nomination.php?error=can't_upload");
+                    header("Location: ../Frontend/nomination.php?error=wrong_file_type");
                 } else if ($_POST['isYouth'] == 0) {
-                    header("Location: ../Frontend/adultnomination.php?error=can't_upload");
+                    header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
                 }
                 exit();
             }
-
-        } else {
-            if($_POST['isYouth'] == 1) {
-                header("Location: ../Frontend/nomination.php?error=wrong_file_type");
-            } else if ($_POST['isYouth'] == 0) {
-                header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
-            }
-            exit();
-        }
-    } 
+        } 
+    }
 
 /*-----------------------------------------------------------------------------*/
 $file3 = $_FILES['pic3Nominee']; //files transmits file contents
@@ -158,34 +162,17 @@ $file3 = $_FILES['pic3Nominee']; //files transmits file contents
                     move_uploaded_file($fileTmpName3, $fileDestination3); //moves file from temp location to real one
                     header("Location: nomination.php?uploadSucess=1"); //brings back to heroes.php
                     #echo 'Success!!';
-                } else {
-                    if($_POST['isYouth'] == 1) {
-                        header("Location: ../Frontend/nomination.php?error=file_size>5MB");
-                    } else if ($_POST['isYouth'] == 0) {
-                        header("Location: ../Frontend/adultnomination.php?error=file_size>5MB");
-                    }
-                    exit();
+                }else {
+                    echo 'Your file is too big! Try uploading another file!';
                 }
-                
-            } else if($fileError1 === 1) {
+            } else if($fileError3 === 1) {
                 //1 means error uploading
-                if($_POST['isYouth'] == 1) {
-                    header("Location: ../Frontend/nomination.php?error=can't_upload");
-                } else if ($_POST['isYouth'] == 0) {
-                    header("Location: ../Frontend/adultnomination.php?error=can't_upload");
-                }
-                exit();
+                echo 'There was an error uploading your file';
             }
-
         } else {
-            if($_POST['isYouth'] == 1) {
-                header("Location: ../Frontend/nomination.php?error=wrong_file_type");
-            } else if ($_POST['isYouth'] == 0) {
-                header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
-            }
-            exit();
+            echo 'Wrong file type. Only jpg, png or jpeg is allowed';
         }
-    } 
+    }
 
 /*-----------------------------------------------------------------------------*/
 

@@ -2,7 +2,7 @@
     border: 5px solid black;
     background-color: white;
     display: grid;
-    width: 60%;
+    width: 50%;
     min-height: 800px;
     margin: 0 auto;
     margin-bottom: 3%;
@@ -11,20 +11,21 @@
     "name name name" 5%
     "youth-adult youth-adult youth-adult" 4%
     "members members members" 15%
-    "headshot work work" 41%
-    "pic2 pic2 pic3" 35%
+    "headshot work work" 20%
+    "headshot work work" 23%
+    "pic2 pic2 pic3" 33%
     / 35% 20% 45%;
 }
 
 @media (max-width: 1400px) {
     .heroViewWrapper {
-        width: 70%; 
+        width: 60%; 
     }
 }
 
 @media (max-width: 1150px) {
     .heroViewWrapper {
-        width: 80%; 
+        width: 75%; 
     }
 }
 

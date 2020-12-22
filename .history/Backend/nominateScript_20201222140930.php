@@ -117,15 +117,16 @@ if(isset($_POST['submit_button'])){
                 exit();
             }
 
-        } else {
-            if($_POST['isYouth'] == 1) {
-                header("Location: ../Frontend/nomination.php?error=wrong_file_type");
-            } else if ($_POST['isYouth'] == 0) {
-                header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
+            } else {
+                if($_POST['isYouth'] == 1) {
+                    header("Location: ../Frontend/nomination.php?error=wrong_file_type");
+                } else if ($_POST['isYouth'] == 0) {
+                    header("Location: ../Frontend/adultnomination.php?error=wrong_file_type");
+                }
+                exit();
             }
-            exit();
-        }
-    } 
+        } 
+    }
 
 /*-----------------------------------------------------------------------------*/
 $file3 = $_FILES['pic3Nominee']; //files transmits file contents
@@ -186,6 +187,7 @@ $file3 = $_FILES['pic3Nominee']; //files transmits file contents
             exit();
         }
     } 
+}
 
 /*-----------------------------------------------------------------------------*/
 
