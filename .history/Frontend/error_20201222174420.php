@@ -3,7 +3,7 @@ require '../Backend/functions.php';
 session_start();
 
 if(!isset($_SESSION['UserID'])) {
-  header("Location: ../Frontend/error.php?error=notsignedin");       
+  header("Location: ../Frontend/home.php?error=notsignedin");       
 }
 ?>
 

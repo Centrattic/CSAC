@@ -781,7 +781,7 @@ if (!function_exists('readFormStatus'))   { // connection not closed in function
             $result = "Success";
             //prepare statement
             if(!mysqli_stmt_prepare($statement, $sqlquery)){
-                $result = mysqli_error($connection);
+                $result = "Error: " . mysqli_error($connection);
             } else {
                 //storing info in database (3 params of info)
                 mysqli_stmt_bind_param($statement, "sss", $status, $comments, $time);

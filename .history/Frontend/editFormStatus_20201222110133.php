@@ -3,7 +3,7 @@ require '../Backend/functions.php';
 session_start();
 
 if(!isset($_SESSION['UserID'])) {
-   header("Location: ../Frontend/error.php?error=notsignedin");
+   header("Location: ../Frontend/home.php?error=not_signed_in");
 }
 ?>
 
@@ -47,7 +47,7 @@ if(!isset($_SESSION['UserID'])) {
             if ($result == "Success") {
                 header("Location: ../Frontend/editFormStatus.php?");
             } else {            
-                header("Location: ../Frontend/error.php?error=".$result); // error just go in else
+                header("Location: ../Frontend/editFormStatus.php?/Error:".$result);
             }
         }
 

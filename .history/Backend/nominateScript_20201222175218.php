@@ -43,7 +43,7 @@ if(isset($_POST['submit_button'])){
 
                 } elseif(${'fileError' . $number} === 1) {
                     //1 means error uploading
-                    header("Location: ../Frontend/error.php?error=can't_upload");
+                    header("Location: ../Frontend/nomination.php?error=can't_upload");
                     exit();
                 }
 
@@ -436,7 +436,7 @@ if(isset($_POST['submit_button'])){
         //prepare statement
         if(!mysqli_stmt_prepare($statement, $sqlquery)){
             mysqli_close($connection);
-            header("Location: ../Frontend/error.php?error=preparation_error"); //brings back to heroes.php
+            header("Location: ../Frontend/nomination.php?/unsuccessful"); //brings back to heroes.php
         } else {
             //storing info in database (3 params of info)
             mysqli_stmt_bind_param($statement, "ssssssssssssssssssssssssssssssssssssissssssssssssssiis", //ints are booleans, 1 if true, 0 if false
@@ -455,21 +455,21 @@ if(isset($_POST['submit_button'])){
             );
             if (mysqli_error($connection) != '') {
                 mysqli_close($connection);
-                header("Location: ../Frontend/error.php?error=unsuccessful_bind");
+                header("Location: ../Frontend/nomination.php?error=unsuccessful_bind");
                 exit();
             }
 
             mysqli_stmt_execute($statement);
             if (mysqli_error($connection) != '') {
                 //mysqli_close($connection);
-                header("Location: ../Frontend/error.php?error=unsuccessful_execute");
+                header("Location: ../Frontend/nomination.php?error=unsuccessful_execute");
                 exit();
             }
 
             mysqli_stmt_store_result($statement);
             if (mysqli_error($connection) != '') {
                 mysqli_close($connection);
-                header("Location: ../Frontend/error.php?error=unsuccessful_store");
+                header("Location: ../Frontend/nomination.php?error=unsuccessful_store");
                 exit();
             }
 

@@ -16,7 +16,7 @@ if(isset($_POST['login-submit'])){
         $sql = "SELECT * FROM users WHERE usernameUsers=? OR emailUsers=?"; //possible syntax error
         $statement = mysqli_stmt_init($connection);
         if (!mysqli_stmt_prepare($statement, $sql)) { //checking that this info can be extracted for database/any errors in it
-            header("Location: ../Frontend/error.php?error=databaseerror");
+            header("Location: home.php?error=databaseerror");
             exit();
         }
         else{
@@ -27,7 +27,7 @@ if(isset($_POST['login-submit'])){
                 $passwordCheck = password_verify($password, $row['pwdUsers']); //checking that hashed password in db matches inputted password
                 if($passwordCheck == false) {
                     mysqli_close($connection);
-                    header("Location: ../Frontend/error.php?error=wrong_password");
+                    header("Location: ../Frontend/home.php?error=wrong_password");
                     exit();
                 }
 
@@ -42,12 +42,12 @@ if(isset($_POST['login-submit'])){
                 }
                 else {
                     mysqli_close($connection);
-                    header("Location: ../Frontend/error.php?error=CRAZYSTUFF");
+                    header("Location: ../Frontend/home.php?error=CRAZYSTUFF");
                     exit();
                 }
             } else {
                 mysqli_close($connection);
-                header("Location: ../Frontend/error.php?error=nouser");
+                header("Location: ../Frontend/home.php?error=nouser");
                 exit(); 
             }
         }
