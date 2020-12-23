@@ -12,8 +12,8 @@ body {
 
 #logo {                
     display: inline-flex;
-    align-items: end;
-    justify-content: center;
+    align-items: center;
+    justify-content: end;
     width: 10%;
     float: left;
     height: 10%;

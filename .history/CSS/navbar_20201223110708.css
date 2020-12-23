@@ -11,8 +11,8 @@ body {
 }
 
 #logo {                
-    display: inline-flex;
-    align-items: end;
+    display: flex;
+    align-items: flex-start;
     justify-content: center;
     width: 10%;
     float: left;
@@ -20,8 +20,8 @@ body {
  }
 
 #logo img {     
-  width: 85px;
-  height: 85px;
+  width: 100px;
+  height: 100px;
 }
 
 

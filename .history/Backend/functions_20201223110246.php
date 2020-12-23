@@ -53,7 +53,7 @@ if (!function_exists('navbar'))   {
                 echo ('
                 <li>
                 <div id = "logo">
-                    <img src = "../Images/CSAClogo.png">
+                    <img src = "../Images/MCSAClogo.png">
                 </div>
                 </li>');
                 

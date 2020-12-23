@@ -12,16 +12,15 @@ body {
 
 #logo {                
     display: inline-flex;
-    align-items: end;
-    justify-content: center;
+    
     width: 10%;
-    float: left;
+    float: left ;
     height: 10%;
  }
 
 #logo img {     
-  width: 85px;
-  height: 85px;
+  width: 90px;
+  height: 90px;
 }
 
 

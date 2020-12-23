@@ -53,7 +53,7 @@ if (!function_exists('navbar'))   {
                 echo ('
                 <li>
                 <div id = "logo">
-                    <img src = "../Images/CSAClogo.png">
+                    <img src = "../Images/MCSAClogo.png">
                 </div>
                 </li>');
                 
@@ -107,7 +107,25 @@ if (!function_exists('navbar'))   {
 
           echo('</ul>
           </div>
-      </nav>');
+      </nav> 
+
+      <style>
+              #logo {                
+                  display: inline-flex;
+                  align-items: end;
+                  justify-content: center;
+                  width: 10%;
+                  float: left;
+                  height: 10%;
+               }
+            
+            #logo img {     
+                width: 90px;
+                height:125px;
+            }
+            
+        </style>
+      ');
 
     }
 }
