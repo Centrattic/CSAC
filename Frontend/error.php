@@ -30,7 +30,7 @@ session_start();
                   } elseif ($_GET['error'] == "emptyloginfields") {
                     echo('You have empty login fields you must fill out.');
                   } elseif ($_GET['error'] == "databaseerror") {
-                    echo('This is a very odd database error.');
+                    echo('This is a very odd database error. ' . $_GET['msg']);
                   } elseif ($_GET['error'] == "wrong_password") {
                     echo('You have entered the wrong password.');
                   } elseif ($_GET['error'] == "CRAZYSTUFF") {

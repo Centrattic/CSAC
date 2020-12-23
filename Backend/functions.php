@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,13 +12,13 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
-        $username = "troopsho_yhuser";
-        $password = "6ZFvFCUWHu9"; //password might change
+        $username = "yh_user_skfhkjsd";
+        $password = "Hmxne5H4!e9s"; //password might change
         $connection = mysqli_connect($database, $username, $password) or die ("could not connect");
-        $connection->select_db("troopsho_yh") or die("could not find database"); //DistanceHacks might change based on name of database
+        $connection->select_db("i7451232_ma2") or die("could not find database"); //DistanceHacks might change based on name of database
         return $connection;
     }
 }
