@@ -7,10 +7,7 @@ session_start();
   <head>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link href="../CSS/home.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" type="image/png" href="../Images/CSAClogo.png"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title> Community Service Award Committee Homepage </title>
-
+    <link rel="shortcut icon" type="image/png" href="../Image/sCSAClogo.png"/>
     
     <link rel = "stylesheet" href = "../CSS/navbar.css">
   </head>

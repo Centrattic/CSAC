@@ -9,7 +9,6 @@ session_start();
         <link rel = 'stylesheet' href = '../CSS/connecthero.css'>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
         <link rel = 'stylesheet' href = '../CSS/navbar.css'>
-        <link rel="shortcut icon" type="image/png" href="../Images/CSAClogo.png"/>
         <link rel = 'stylesheet' href = '../CSS/heroview_public.css'>
         <title> View Heroes </title>
      <!--   <link rel = 'stylesheet' href = '../CSS/print.css' media = "print">-->

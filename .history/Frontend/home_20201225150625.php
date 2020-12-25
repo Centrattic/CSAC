@@ -9,7 +9,7 @@ session_start();
     <link href="../CSS/home.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="image/png" href="../Images/CSAClogo.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title> Community Service Award Committee Homepage </title>
+    <title> Community Service Award Committee </title>
 
     
     <link rel = "stylesheet" href = "../CSS/navbar.css">

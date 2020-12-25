@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -99,7 +99,10 @@ if (!function_exists('navbar'))   {
                     <form id = "logout" action = "../Backend/logoutscript.php" method = "post">      
                     <button style = "font-size: 1em !important; border-radius: 0px" onclick = "logout();" type = "submit" name = "logout-submit">Logout</button> 
                     </form>
-                </li>' );
+                </li>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>' );
               }
 
             //input of password and username set up
@@ -108,7 +111,21 @@ if (!function_exists('navbar'))   {
 
           echo('</ul>
           </div>
-      </nav>');
+      </nav>
+
+      <script>
+      function myFunction() {
+        var x = document.getElementByClass("navbar");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+      </script>
+      
+      
+      ');
 
     }
 }

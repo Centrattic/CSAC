@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -94,12 +94,11 @@ if (!function_exists('navbar'))   {
                     <a class = "navlink" href = "loginpage.php"> Admin</a>
                   </li>';
               } else {
-                  echo('
-                  <li> 
-                    <form id = "logout" action = "../Backend/logoutscript.php" method = "post">      
-                    <button style = "font-size: 1em !important; border-radius: 0px" onclick = "logout();" type = "submit" name = "logout-submit">Logout</button> 
-                    </form>
-                </li>' );
+                  echo('<li> 
+                  <form id = "logout" action = "../Backend/logoutscript.php" method = "post">      
+                  <button style = "font-size: 1em !important; border-radius: 0px" onclick = "logout();" type = "submit" name = "logout-submit">Logout</button> 
+                  </form>
+                </li>');
               }
 
             //input of password and username set up
