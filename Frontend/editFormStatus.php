@@ -11,6 +11,7 @@ if(!isset($_SESSION['UserID'])) {
   <head>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link href="../CSS/home.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/png" href="../Images/CSAClogo.png"/>
     <title> Edit Form Status </title>
     <link rel = "stylesheet" href = "../CSS/navbar.css">
   </head>

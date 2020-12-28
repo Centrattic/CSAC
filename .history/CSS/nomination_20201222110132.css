@@ -43,14 +43,6 @@ form {
     margin: 0 auto;
 }
 
-
-@media (max-width: 800px) {
-    form {
-        width: 95%; 
-    }
-}
-
-
 input, textarea {
     text-align: left;
     background-color: #ffffff;

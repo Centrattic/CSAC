@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -117,7 +117,7 @@ if (!function_exists('footer')) {
     function footer() {
         $date = date('Y');
         echo("<footer id='colophon' class='site-footer' role='contentinfo'>
-      <!--<div class='social-wrapper'>
+      <div class='social-wrapper'>
         <ul>
           <li>
             <a href='#' target='_blank'>
@@ -137,7 +137,7 @@ if (!function_exists('footer')) {
           </li>
           
         </ul>
-      </div> -->
+      </div>
 
       <nav class='footer-nav' role='navigation'>
         <p>Copyright &copy $date Millburn Township Community Service Award Committee.
@@ -365,7 +365,7 @@ if (!function_exists('generateHeroesListing'))   {
                                 </div>
                                 
                                 <div class = 'headshot-item'> 
-                                    <img class = 'headshot' src= '../Images/$headshotNominee' alt = 'Headshot'>
+                                    <img class = 'headshot' src= '../Images/$headshotNominee'>
                                 </div>
 
                                 <!-- COMMENTED OUT
@@ -379,10 +379,10 @@ if (!function_exists('generateHeroesListing'))   {
                                 </div>
 
                                 <div class = 'pic2-item'> 
-                                    <img class = 'pic2-pic' src= '../Images/$pic2Nominee' alt = 'Working picture'>
+                                    <img class = 'pic2-pic' src= '../Images/$pic2Nominee'>
                                 </div>
                                 <div class = 'pic3-item'> 
-                                    <img class = 'pic3-pic' src= '../Images/$pic3Nominee' alt = 'Working picture'>
+                                    <img class = 'pic3-pic' src= '../Images/$pic3Nominee'>
                                 </div>
                     </div>";
                         
@@ -468,6 +468,7 @@ if (!function_exists('generateHeroesListing'))   {
                             $instagramInfo = "<b> Instagram: </b> <a class = 'sociallink' target = '_blank' href = '$instagramNominee'>Instagram Link </a>";
                         }
 
+                /// currentwinner, pastwinner -- change the grid
                     $output = "
 
                         <div class = 'no-print'>
