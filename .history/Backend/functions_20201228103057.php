@@ -264,20 +264,14 @@ if (!function_exists('generateHeroesListing'))   {
                         $headshotNominee = "defaulthero.png";
                     }
 
-                    if ($pic2Nominee == "" || $captionPic2 == "") {
-                        $captionPic2 = "No caption";
-                    }
-
-                    if ($pic3Nominee == "" || $captionPic3 == "") { //empty caption/no caption box
-                        $captionPic3 = "No caption";
-                    }                      
-
-                    if ($pic2Nominee == "") { //default pic
+                    if ($pic2Nominee == "") {
                         $pic2Nominee = "defaultservice.jpeg";
+                        $captionPic2 = "";
                     }
 
                     if ($pic3Nominee == "") {
                         $pic3Nominee = "defaultservice2.jpeg";
+                        $captionPic3 = "";
                     }
 
                     /*
@@ -548,16 +542,8 @@ if (!function_exists('generateHeroesListing'))   {
                                     <img class = 'pic2-pic' src= '../Images/$pic2Nominee'>
                                 </div>
 
-                                <div class = 'caption-pic2-item'> 
-                                    <span> $captionPic2 </span>                                
-                                </div>
-
                                 <div class = 'pic3-item'> 
                                     <img class = 'pic3-pic' src= '../Images/$pic3Nominee'>
-                                </div>
-
-                                <div class = 'caption-pic3-item'> 
-                                    <span> $captionPic3 </span>                                
                                 </div>
 
                                 $nominatorItem

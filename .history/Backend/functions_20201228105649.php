@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -264,15 +264,7 @@ if (!function_exists('generateHeroesListing'))   {
                         $headshotNominee = "defaulthero.png";
                     }
 
-                    if ($pic2Nominee == "" || $captionPic2 == "") {
-                        $captionPic2 = "No caption";
-                    }
-
-                    if ($pic3Nominee == "" || $captionPic3 == "") { //empty caption/no caption box
-                        $captionPic3 = "No caption";
-                    }                      
-
-                    if ($pic2Nominee == "") { //default pic
+                    if ($pic2Nominee == "") {
                         $pic2Nominee = "defaultservice.jpeg";
                     }
 
@@ -549,7 +541,7 @@ if (!function_exists('generateHeroesListing'))   {
                                 </div>
 
                                 <div class = 'caption-pic2-item'> 
-                                    <span> $captionPic2 </span>                                
+                                    <span> $captionPic2 </span>
                                 </div>
 
                                 <div class = 'pic3-item'> 

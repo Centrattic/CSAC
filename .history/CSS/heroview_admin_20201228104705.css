@@ -47,16 +47,15 @@
     border-top: none;
     display: grid;
     width: 60%;
-    min-height: 450px;
-    max-height: 475px;
+    min-height: 400px;
+    max-height: 425px;
     margin: 0 auto;
     margin-bottom: 3%;
     font-size: 0.9em;
     grid-template:
-    "media below-work below-work" 24%
-    "pic2 pic2 pic3" 55%
-    "caption-pic2 caption-pic2 caption-pic3" 10%
-    "nominator nominator nominator" 11%
+    "media below-work below-work" 27%
+    "pic2 pic2 pic3" 59%
+    "nominator nominator nominator" 14%
     / 35% 20% 45%;
 
 }

@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -266,11 +266,17 @@ if (!function_exists('generateHeroesListing'))   {
 
                     if ($pic2Nominee == "" || $captionPic2 == "") {
                         $captionPic2 = "No caption";
-                    }
+                    } else ($caption2Item = "
+                    <div class = 'caption-pic3-item'> 
+                        <span> $captionPic2 </span>                                
+                    </div>");
 
                     if ($pic3Nominee == "" || $captionPic3 == "") { //empty caption/no caption box
                         $captionPic3 = "No caption";
-                    }                      
+                    } else ($caption3Item = "
+                    <div class = 'caption-pic3-item'> 
+                        <span> $captionPic3 </span>                                
+                    </div>");                       
 
                     if ($pic2Nominee == "") { //default pic
                         $pic2Nominee = "defaultservice.jpeg";
@@ -548,17 +554,13 @@ if (!function_exists('generateHeroesListing'))   {
                                     <img class = 'pic2-pic' src= '../Images/$pic2Nominee'>
                                 </div>
 
-                                <div class = 'caption-pic2-item'> 
-                                    <span> $captionPic2 </span>                                
-                                </div>
+                                $caption2Item
 
                                 <div class = 'pic3-item'> 
                                     <img class = 'pic3-pic' src= '../Images/$pic3Nominee'>
                                 </div>
 
-                                <div class = 'caption-pic3-item'> 
-                                    <span> $captionPic3 </span>                                
-                                </div>
+                                $caption3Item
 
                                 $nominatorItem
 

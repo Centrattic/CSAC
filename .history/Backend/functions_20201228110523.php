@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
