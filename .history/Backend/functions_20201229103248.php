@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -240,9 +240,9 @@ if (!function_exists('generateHeroesListing'))   {
                     $mediaRelease = htmlspecialchars($row['mediaRelease'], ENT_QUOTES, 'UTF-8');
                     $timeSubmission = htmlspecialchars($row['timeSubmission'], ENT_QUOTES, 'UTF-8');
 
-                    $headshotNominee = htmlspecialchars($row['headshotNominee'], ENT_QUOTES, 'UTF-8');
-                    $pic2Nominee = htmlspecialchars($row['pic2Nominee'], ENT_QUOTES, 'UTF-8');
-                    $pic3Nominee = htmlspecialchars($row['pic3Nominee'], ENT_QUOTES, 'UTF-8');     
+                    $headshotNominee = $row['headshotNominee'];
+                    $pic2Nominee = $row['pic2Nominee'];
+                    $pic3Nominee = $row['pic3Nominee'];     
 
                     $bioNominee = htmlspecialchars($row['bioNominee'], ENT_QUOTES, 'UTF-8');
                     $workNominee = htmlspecialchars($row['workNominee'], ENT_QUOTES, 'UTF-8');

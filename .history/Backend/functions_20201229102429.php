@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -197,7 +197,7 @@ if (!function_exists('generateHeroesListing'))   {
 
                 while($row = mysqli_fetch_array($result)){
 
-                    $idNominations = htmlspecialchars($row['idNominations'], ENT_QUOTES, 'UTF-8');
+                    $idNominations = $row['idNominations'];
 
                     $groupName = htmlspecialchars($row['groupName'], ENT_QUOTES, 'UTF-8');
                     $nameNominee1 = htmlspecialchars($row['nameNominee1'], ENT_QUOTES, 'UTF-8');
@@ -224,12 +224,12 @@ if (!function_exists('generateHeroesListing'))   {
                     $schoolNominee4 = htmlspecialchars($row['schoolNominee4'], ENT_QUOTES, 'UTF-8');
                     $nameParent1 = htmlspecialchars($row['nameParent1'], ENT_QUOTES, 'UTF-8');
                     $nameParent2 = htmlspecialchars($row['nameParent2'], ENT_QUOTES, 'UTF-8');
-                    $nameParent3 = htmlspecialchars($row['nameParent3'], ENT_QUOTES, 'UTF-8');
-                    $nameParent4 = htmlspecialchars($row['nameParent4'], ENT_QUOTES, 'UTF-8');
+                    $nameParent3 = $row['nameParent3'];
+                    $nameParent4 = $row['nameParent4'];
                     $emailParent1 = htmlspecialchars($row['emailParent1'], ENT_QUOTES, 'UTF-8');
-                    $emailParent2 = htmlspecialchars($row['emailParent2'], ENT_QUOTES, 'UTF-8');
-                    $emailParent3 = htmlspecialchars($row['emailParent3'], ENT_QUOTES, 'UTF-8');
-                    $emailParent4 = htmlspecialchars($row['emailParent4'], ENT_QUOTES, 'UTF-8');
+                    $emailParent2 = $row['emailParent2'];
+                    $emailParent3 = $row['emailParent3'];
+                    $emailParent4 = $row['emailParent4'];
                     $phoneParent1 = htmlspecialchars($row['phoneParent1'], ENT_QUOTES, 'UTF-8');
                     $phoneParent2 = htmlspecialchars($row['phoneParent2'], ENT_QUOTES, 'UTF-8');
                     $phoneParent3 = htmlspecialchars($row['phoneParent3'], ENT_QUOTES, 'UTF-8');
@@ -237,22 +237,22 @@ if (!function_exists('generateHeroesListing'))   {
                     $nameNominator = htmlspecialchars($row['nameNominator'], ENT_QUOTES, 'UTF-8');
                     $emailNominator = htmlspecialchars($row['emailNominator'], ENT_QUOTES, 'UTF-8');
                     $phoneNominator = htmlspecialchars($row['phoneNominator'], ENT_QUOTES, 'UTF-8');
-                    $mediaRelease = htmlspecialchars($row['mediaRelease'], ENT_QUOTES, 'UTF-8');
+                    $mediaRelease = $row['mediaRelease'];
                     $timeSubmission = htmlspecialchars($row['timeSubmission'], ENT_QUOTES, 'UTF-8');
 
-                    $headshotNominee = htmlspecialchars($row['headshotNominee'], ENT_QUOTES, 'UTF-8');
-                    $pic2Nominee = htmlspecialchars($row['pic2Nominee'], ENT_QUOTES, 'UTF-8');
-                    $pic3Nominee = htmlspecialchars($row['pic3Nominee'], ENT_QUOTES, 'UTF-8');     
+                    $headshotNominee = $row['headshotNominee'];
+                    $pic2Nominee = $row['pic2Nominee'];
+                    $pic3Nominee = $row['pic3Nominee'];     
 
                     $bioNominee = htmlspecialchars($row['bioNominee'], ENT_QUOTES, 'UTF-8');
                     $workNominee = htmlspecialchars($row['workNominee'], ENT_QUOTES, 'UTF-8');
-                    $twitterNominee = htmlspecialchars($row['twitterNominee'], ENT_QUOTES, 'UTF-8');
+                    $twitterNominee = $row['twitterNominee'];
                     $facebookNominee = htmlspecialchars($row['facebookNominee'], ENT_QUOTES, 'UTF-8');
                     $instagramNominee = htmlspecialchars($row['instagramNominee'], ENT_QUOTES, 'UTF-8');
-                    $newsNominee = htmlspecialchars($row['newsNominee'], ENT_QUOTES, 'UTF-8');
-                    $websiteNominee = htmlspecialchars($row['websiteNominee'], ENT_QUOTES, 'UTF-8');
+                    $newsNominee = $row['newsNominee'];
+                    $websiteNominee = $row['websiteNominee'];
 
-                    $statusNominee = htmlspecialchars($row['statusNominee'], ENT_QUOTES, 'UTF-8');
+                    $statusNominee = $row['statusNominee'];
                     $isYouth = $row['isYouth'];
                     $resumeNominee = $row['resumeNominee'];
 

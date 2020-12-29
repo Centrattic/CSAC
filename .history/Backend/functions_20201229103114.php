@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -242,17 +242,17 @@ if (!function_exists('generateHeroesListing'))   {
 
                     $headshotNominee = htmlspecialchars($row['headshotNominee'], ENT_QUOTES, 'UTF-8');
                     $pic2Nominee = htmlspecialchars($row['pic2Nominee'], ENT_QUOTES, 'UTF-8');
-                    $pic3Nominee = htmlspecialchars($row['pic3Nominee'], ENT_QUOTES, 'UTF-8');     
+                    $pic3Nominee = htmlspecialchars($row['pic3Nominee'], ENT_QUOTES, 'UTF-8');
 
                     $bioNominee = htmlspecialchars($row['bioNominee'], ENT_QUOTES, 'UTF-8');
                     $workNominee = htmlspecialchars($row['workNominee'], ENT_QUOTES, 'UTF-8');
-                    $twitterNominee = htmlspecialchars($row['twitterNominee'], ENT_QUOTES, 'UTF-8');
+                    $twitterNominee = $row['twitterNominee'];
                     $facebookNominee = htmlspecialchars($row['facebookNominee'], ENT_QUOTES, 'UTF-8');
                     $instagramNominee = htmlspecialchars($row['instagramNominee'], ENT_QUOTES, 'UTF-8');
-                    $newsNominee = htmlspecialchars($row['newsNominee'], ENT_QUOTES, 'UTF-8');
-                    $websiteNominee = htmlspecialchars($row['websiteNominee'], ENT_QUOTES, 'UTF-8');
+                    $newsNominee = $row['newsNominee'];
+                    $websiteNominee = $row['websiteNominee'];
 
-                    $statusNominee = htmlspecialchars($row['statusNominee'], ENT_QUOTES, 'UTF-8');
+                    $statusNominee = $row['statusNominee'];
                     $isYouth = $row['isYouth'];
                     $resumeNominee = $row['resumeNominee'];
 
