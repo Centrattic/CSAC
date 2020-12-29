@@ -123,7 +123,7 @@ session_start();
 
     <p> If you have any questions or would like more information, please email<a href = "mailto:letusknow@millburntwp.org">letusknow@millburntwp.org</a> with subject line "Community Service Awards".</p>
 
-    <img src = "../Images/townlogo.png" alt = "Millburn Township Logo" width = 100px;>
+    <img src = "../Images/townlogo.png">
 
      <?php
       footer();

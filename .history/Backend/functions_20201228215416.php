@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -53,7 +53,7 @@ if (!function_exists('navbar'))   {
                 echo ('
                 <li>
                 <div id = "logo">
-                    <img src = "../Images/CSAClogo.png">
+                    <img src = "../Images/oldlogo.png">
                 </div>
                 </li>');
                 

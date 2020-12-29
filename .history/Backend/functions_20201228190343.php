@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -351,8 +351,8 @@ if (!function_exists('generateHeroesListing'))   {
 
                         <div class = 'print heroViewWrapper'>
 
-                                <div class = 'name-item'>".htmlspecialchars($groupName, ENT_QUOTES, 'UTF-8')."
-                                
+                                <div class = 'name-item'> 
+                                $groupName
                                 </div>
 
                                 <div class = 'youth-adult-item'>
