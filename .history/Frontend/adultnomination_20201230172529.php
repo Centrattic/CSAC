@@ -24,14 +24,10 @@ session_start();
                 } else if(e.which){ // Netscape/Firefox/Opera                   
                 keynum = e.which;
                 }
-                if(keynum==62 || keynum==60 || keynum==91 || keynum==93 || keynum==123 || keynum == 125)
+                if(keynum==62 || keynum==60)
                     e.preventDefault();
-                }
+            }
         </script>
-        
-        <noscript>
-            <meta HTTP-EQUIV="refresh" content=0;url="error.php?error=no-javascript">
-        </noscript>
 
         <!--<style>
                 .collapsible {
@@ -223,13 +219,13 @@ session_start();
 
                 <div class = "col-5">
                     <label for="facebookNominee">Facebook</label> 
-                    <input onkeypress="return myKeyPress(event)" class = "form-control" maxlength = "100" type="text" name="facebookNominee" value="" title="Nominee's Facebook">
+                    <input class = "form-control" maxlength = "100" type="text" name="facebookNominee" value="" title="Nominee's Facebook">
                     <span class="hint">Must be in full URL format. For example, http://www.facebook.com/younghero</span>
                 </div>
 
                 <div class = "col-6">
                     <label for="instagramNominee">Instagram</label>
-                    <input onkeypress="return myKeyPress(event)" class = "form-control" maxlength = "100" type="text" name="instagramNominee" value="" title="Nominee's Instagram">
+                    <input class = "form-control" maxlength = "100" type="text" name="instagramNominee" value="" title="Nominee's Instagram">
                     <span class="hint">Must be in full URL format. For example, https://www.instagram.com/youthservice/</span>
                 </div>
             </div>
@@ -251,14 +247,14 @@ session_start();
                     <label for = "pic2Nominee">Working Picture </label> <br>
                     <input class = "form-control-file" type = "file"  name = "pic2Nominee">
 
-                    <input onkeypress="return myKeyPress(event)" class = "form-control" type = "text" maxlength="80" name = "Captionpic2Nominee" placeholder = "Caption">
+                    <input class = "form-control" type = "text" maxlength="80" name = "Captionpic2Nominee" placeholder = "Caption">
                     <span>Limit: 80 characters</span>
                 </div>
 
                 <div class = "col-5">
                      <label for = "pic3Nominee">Working Picture </label> <br>
                     <input class = "form-control-file" type = "file" name = "pic3Nominee">
-                    <input onkeypress="return myKeyPress(event)" class = "form-control" type = "text" maxlength="80" name = "Captionpic3Nominee" placeholder = "Caption">
+                    <input class = "form-control" type = "text" maxlength="80" name = "Captionpic3Nominee" placeholder = "Caption">
                     <span>Limit: 80 characters</span>
                 </div>
             </div>

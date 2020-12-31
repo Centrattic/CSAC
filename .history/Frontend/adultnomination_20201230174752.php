@@ -223,7 +223,7 @@ session_start();
 
                 <div class = "col-5">
                     <label for="facebookNominee">Facebook</label> 
-                    <input onkeypress="return myKeyPress(event)" class = "form-control" maxlength = "100" type="text" name="facebookNominee" value="" title="Nominee's Facebook">
+                    <input onclick="return myKeyPress(event)" class = "form-control" maxlength = "100" type="text" name="facebookNominee" value="" title="Nominee's Facebook">
                     <span class="hint">Must be in full URL format. For example, http://www.facebook.com/younghero</span>
                 </div>
 

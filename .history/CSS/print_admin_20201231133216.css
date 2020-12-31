@@ -56,9 +56,10 @@
     grid-template:
     "name name name" 5%
     "youth-adult youth-adult youth-adult" 5%
-    "members members members" 30%
+    "members members members" 28%
     /*"headshot category category" 5%*/
-    "headshot work work" 60%
+    "headshot work work" 30%
+    "headshot work work" 32%
     / 35% 20% 45%;
 }
 
@@ -69,10 +70,10 @@
     margin-bottom: 3%;
     font-size: 0.9em;
     grid-template:
-    "media below-work below-work" 25%
-    "pic2 pic2 pic3" 53%
+    "media below-work below-work" 24%
+    "pic2 pic2 pic3" 55%
     "caption-pic2 caption-pic2 caption-pic3" 10%
-    "nominator nominator nominator" 12%
+    "nominator nominator nominator" 11%
     / 35% 20% 45%;
 }
 

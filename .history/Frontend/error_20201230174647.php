@@ -57,7 +57,7 @@ session_start();
                   } elseif ($_GET['error'] == "preparation_error") {
                     echo('Your information could not be prepared for databse entry.');
                   } elseif ($_GET['error'] == 'no-javascript') {
-                    echo('Javascript is not enabled; you must enable Javascript in order to use this form.');
+                    echo('You must enable Javascript in order to use this form.');
                   } else {
                     echo('What a confusing error!');
                   }

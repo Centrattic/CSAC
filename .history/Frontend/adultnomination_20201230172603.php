@@ -24,14 +24,10 @@ session_start();
                 } else if(e.which){ // Netscape/Firefox/Opera                   
                 keynum = e.which;
                 }
-                if(keynum==62 || keynum==60 || keynum==91 || keynum==93 || keynum==123 || keynum == 125)
+                if(keynum==62 || keynum==60)
                     e.preventDefault();
-                }
+            }
         </script>
-        
-        <noscript>
-            <meta HTTP-EQUIV="refresh" content=0;url="error.php?error=no-javascript">
-        </noscript>
 
         <!--<style>
                 .collapsible {

@@ -28,10 +28,6 @@ session_start();
                     e.preventDefault();
                 }
         </script>
-        
-        <noscript>
-            <meta HTTP-EQUIV="refresh" content=0;url="error.php?error=no-javascript">
-        </noscript>
 
         <!--<style>
                 .collapsible {

@@ -70,9 +70,9 @@
     font-size: 0.9em;
     grid-template:
     "media below-work below-work" 25%
-    "pic2 pic2 pic3" 53%
+    "pic2 pic2 pic3" 50%
     "caption-pic2 caption-pic2 caption-pic3" 10%
-    "nominator nominator nominator" 12%
+    "nominator nominator nominator" 15%
     / 35% 20% 45%;
 }
 

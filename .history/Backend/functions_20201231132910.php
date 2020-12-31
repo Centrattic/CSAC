@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -171,18 +171,18 @@ if (!function_exists('generateHeroesListing'))   {
             //sql query to search database
             $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'nothing' ORDER BY idNominations DESC";
             if ($type === "submitted" || $type === "currentnominations") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'submitted' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'submitted' ";
                 
             } elseif ($type === "archived") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'archived' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'archived' ";
             } elseif ($type === "editwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' ";
             } elseif ($type === "editpastwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ";
             } elseif ($type === "currentwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' ORDER BY idNominations DESC"; /* AND yearNomination =" . date(Y);*/
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' "; /* AND yearNomination =" . date(Y);*/
             } elseif ($type === "pastwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ";
             }
 
             $result = $connection->query($sqlquery) or die ("could not search");

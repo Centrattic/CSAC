@@ -2,7 +2,7 @@
 
 if (!function_exists('connectToDB'))   {
 
-    function connectToDB2() {
+    function connectToDB() {
         //prepared statement for security
         $database = "localhost";
         $username = "root";
@@ -12,7 +12,7 @@ if (!function_exists('connectToDB'))   {
         return $connection;
     }
 
-    function connectToDB() {
+    function connectToDB2() {
         //prepared statement for security
         $database = "localhost";
         $username = "yh_user_skfhkjsd";
@@ -169,20 +169,20 @@ if (!function_exists('generateHeroesListing'))   {
             //$searchq = preg_replace("#[^0-9]#", "", $searchq); //replaces all chars of searchq that are not a num with blank
             
             //sql query to search database
-            $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'nothing' ORDER BY idNominations DESC";
+            $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'nothing' ";
             if ($type === "submitted" || $type === "currentnominations") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'submitted' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'submitted' ";
                 
             } elseif ($type === "archived") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'archived' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'archived' ";
             } elseif ($type === "editwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' ";
             } elseif ($type === "editpastwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ";
             } elseif ($type === "currentwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' ORDER BY idNominations DESC"; /* AND yearNomination =" . date(Y);*/
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'winner' "; /* AND yearNomination =" . date(Y);*/
             } elseif ($type === "pastwinners") {
-                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ORDER BY idNominations DESC";
+                $sqlquery = "SELECT * FROM nominations WHERE statusNominee = 'pastwinner' ";
             }
 
             $result = $connection->query($sqlquery) or die ("could not search");
@@ -619,12 +619,12 @@ if (!function_exists('additionalMembersHTML'))   {
             <div class = 'form-row'>
                 <div class = 'col-6'>
                     <label for = 'nameNominee$aMindex'>Nominee $aMindex's Full Name</label>
-                    <input onkeypress='return myKeyPress(event)' class = 'form-control' type='text' id = 'nameNominee' name='nameNominee$aMindex' value='' title='Nominee's Full Name'>
+                    <input class = 'form-control' type='text' id = 'nameNominee' name='nameNominee$aMindex' value='' title='Nominee's Full Name'>
                 </div>
 
                 <div class = 'col-5'>
                     <label for='emailNominee$aMindex'>Nominee $aMindex's Email</label>
-                    <input onkeypress='return myKeyPress(event)' class = 'form-control' type='text' name='emailNominee$aMindex' value='' title='Nominee's Email'>
+                    <input class = 'form-control' type='text' name='emailNominee$aMindex' value='' title='Nominee's Email'>
                 </div>
             </div>
 
@@ -633,14 +633,14 @@ if (!function_exists('additionalMembersHTML'))   {
                 <div>               
                 <label for='ageNominee$aMindex'>Nominee's Age</label>
                     <div class='inputWrapper'>
-                        <input onkeypress='return myKeyPress(event)' class = 'form-control' type='number' name='ageNominee$aMindex' min = '1' max = '18' value='' title='Nominee's Age'> <!-- add drop down for this
+                        <input class = 'form-control' type='number' name='ageNominee$aMindex' min = '1' max = '18' value='' title='Nominee's Age'> <!-- add drop down for this
                     </div>
                 </div> <!-- JUST ADDED TODAY, DO PUT INTO DATABASE PROPERLY
 
                 <div>               
                 <label for='gradeNominee$aMindex'>Nominee's Current Grade</label>
                     <div class='inputWrapper'>
-                        <input onkeypress='return myKeyPress(event)' class = 'form-control' type='number' name='gradeNominee$aMindex' min = '1' max = '12' value='' title='Nominee's Grade'> <!-- add drop down for this
+                        <input class = 'form-control' type='number' name='gradeNominee$aMindex' min = '1' max = '12' value='' title='Nominee's Grade'> <!-- add drop down for this
                     </div> <!--- NEED TO PUT GRADE SECTION INTO DB
                 </div>
 
@@ -704,12 +704,12 @@ if (!function_exists('additionalAdultMembersHTML'))   {
     <div class = 'form-row'>
         <div class = 'col-6'>
             <label for = 'nameNominee$aMindex'>Nominee $aMindex's Name </label>
-            <input onkeypress='return myKeyPress(event)' class = 'form-control' type='text' id = 'nameNominee$aMindex' name='nameNominee$aMindex' value='' title='Nominee's Full Name'>
+            <input class = 'form-control' type='text' id = 'nameNominee$aMindex' name='nameNominee$aMindex' value='' title='Nominee's Full Name'>
         </div>
 
         <div class = 'col-5'>
             <label for='emailNominee$aMindex'>Nominee $aMindex's Email </label>
-            <input onkeypress='return myKeyPress(event)' class = 'form-control' type='text' name='emailNominee$aMindex' value='' title='Nominee's Email'>
+            <input class = 'form-control' type='text' name='emailNominee$aMindex' value='' title='Nominee's Email'>
         </div>
     </div>
 
