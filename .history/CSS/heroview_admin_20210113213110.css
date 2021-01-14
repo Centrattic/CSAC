@@ -53,10 +53,10 @@
     margin-bottom: 3%;
     font-size: 0.9em;
     grid-template:
-    "media below-work below-work" 23%
-    "pic2 pic2 pic3" 54%
+    "media below-work below-work" 24%
+    "pic2 pic2 pic3" 55%
     "caption-pic2 caption-pic2 caption-pic3" 10%
-    "nominator nominator nominator" 13%
+    "nominator nominator nominator" 11%
     / 35% 20% 45%;
 
 }
@@ -235,7 +235,7 @@ h1 {
 .pic2-pic {
     width: 100%;
     height: 100%;
-    object-fit:contain;
+    object-fit:cover;
 }
 
 .caption-pic2-item {
@@ -253,7 +253,7 @@ h1 {
 .pic3-pic {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .caption-pic3-item {
